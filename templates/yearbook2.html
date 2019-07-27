@@ -1,0 +1,251 @@
+{% load staticfiles %}
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/css/mdb.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'strip.css' %}">
+
+    <!-- JQuery -->
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js"></script>
+<style>
+.nav-item:hover{
+  border-bottom: blue 3px solid;
+
+}
+.btn{color:white;
+
+  border: 2px solid black;
+  }
+
+    .btn:hover{color:white;
+    background-color:#202020}
+ .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/media/ll.gif') 50% 50% no-repeat rgb(249,249,249);
+
+}
+    </style>
+
+    <script type="text/javascript">
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>
+
+</head>
+<body style="background-image: url(/media/f.jpg); background-repeat: no-repeat; background-attachment: fixed; ">
+<div class="loader"></div>
+   <div class="container-fluid">
+    <div class="row">
+&nbsp;<nav class="navbar navbar-expand-lg navbar-light" id="navbar-example2" style="z-index:10;position:fixed;background-color:white;width:100%;font-size:12pt;font-family:Railway Regular;">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mr-auto">
+        <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+      </ul>
+      <ul class="navbar-nav mx-5">
+     <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/" ><br><i style="padding-left:30%" class="fas fa-home"></i><br>Home</a>
+      </li>
+     <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/validj" ><br><i style="padding-left:30%" class="fas fa-briefcase"></i><br>Jobs</a>
+      </li>
+           <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/network"><br><i style="padding-left:30%" class="fas fa-users"></i><br>Network</a>
+      </li>
+       <li class="nav-item" style="">
+        <a style="padding-left:20px" class="nav-link" href="/validp" ><br><i style="padding-left:30%" class="fas fa-user"></i><br>My Profile</a>
+      </li>
+
+          <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/batch"><br><i style="padding-left:30%" class="fas fa-user-friends"></i><br>Batchmates</a>
+      </li>
+           <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/year"><br><i style="padding-left:30%" class="fas fa-book-open"></i><br>Yearbook</a>
+      </li>
+         <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/message"><br><i style="padding-left:30%" class="fas fa-comment"></i><br>Message</a>
+      </li>
+       <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/logout"><br><i style="padding-left:30%" class="fas fa-power-off"></i><br>Logout</a>
+      </li>
+
+
+
+    </ul>
+  </div>
+    </nav></div></div>
+
+
+    <div class="container-fluid">
+<div class="row" style="background-color:#000066;" id="yearrow"><br>
+
+<div class="col-sm-2 mx-3 my-2" style="padding:0%;background-color:#3333FF; border-radius:2%;">
+   <p style="text-align: center;padding-top: 8px;padding-bottom: 0px;height: 30px;">
+   <b>
+   <a href="/my_profile"><font color=white size="4" face="Roboto">{{ request.user }}</font></a> </b></div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-5 " style="padding-top: 8px;">
+     <form class="form-inline my-1 my-lg-0" role="search" method="post" action="/searchp/">{% csrf_token %}
+      <input class="form-control mr-sm-2"  id="search" type="search" placeholder="search by Name" name="q"  value="{{ request.GET.q }}">
+         <ul id="search-results" style="position: absolute;top:60px;left:-35px;z-index: 1"></ul>
+
+      <button class="btn btn-outline-info" type="submit" style="padding-left: 10px;padding-right: 10px;"><i class="fas fa-search"></i></button>
+    </form></div>
+    &nbsp;</div></div>
+    <div class="row" style="padding-left:100px;padding-top:20px">
+        <div class="col-md-12">
+            <p style="color:white; font-size:18pt">CDAC Members Directory</p></div></div>
+
+
+    <div class="row d-flex justify-content-center" style="padding:50px">
+        <div class="col-md-10 d-flex justify-content-center" style="background-color:black;opacity:0.5">
+       <font face="Roboto"> <p  align="center" style="color:white;font-size:14pt;padding-left: 40px;padding-right: 30px;padding-top: 30px;padding-bottom: 30px;">Make sure all of your friends are part of official CDAC directory.
+            <br>
+Invite them by sharing directory in your whatsapp batch groups & facebook wall
+
+
+ </p>
+       </font>
+</div>
+    </div>
+
+
+<div class="container">
+    <div class="row" style="padding:20px;">
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-6" style="margin-bottom:20px">
+            <a href="/b2019"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2019<br>{{ a }} Members</button></a>
+        </div>
+            <div class="col-6" style="margin-bottom:20px"> <a href="/b2018"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2018<br>{{ b }} Members</button></a></div>
+                </div>
+        </div>
+         <div class="col-md-6 ">
+            <div class="row">
+                <div class="col-6">
+            <a href="/b2017"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2017<br>{{ c }} Members</button></a>
+        </div>
+            <div class="col-6"> <a href="/b2016"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2016<br>{{ d }} Members</button></a></div>
+                </div>
+        </div>
+
+    </div>
+    <div class="row" style="padding:20px;">
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-6" style="margin-bottom:20px">
+            <a href="/b2015"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2015<br>{{ e }} Members</button></a>
+        </div>
+            <div class="col-6" style="margin-bottom:20px"> <a href="/b2014"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2014<br>{{ f }} Members</button></a></div>
+                </div>
+        </div>
+         <div class="col-md-6 ">
+            <div class="row">
+                <div class="col-6">
+            <a href="/b2013"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2013<br>{{ g }} Members</button></a>
+        </div>
+            <div class="col-6"> <a href="/b2012"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2012<br>{{ h }} Members</button></a></div>
+                </div>
+        </div>
+
+    </div>
+    <div class="row" style="padding:20px;">
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-6" style="margin-bottom:20px">
+            <a href="/b2011"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2011<br>{{ i }} Members</button></a>
+        </div>
+            <div class="col-6" style="margin-bottom:20px"> <a href="/b2010"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2010<br>{{ j }} Members</button></a></div>
+                </div>
+        </div>
+         <div class="col-md-6 ">
+            <div class="row">
+                <div class="col-6">
+            <a href="/b2009"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2009<br>{{ k }} Members</button></a>
+        </div>
+            <div class="col-6"> <a href="/b2008"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2008<br>{{ l }} Members</button></a></div>
+                </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+<div class="footer">
+    <footer style="background-color: #1E3953;
+    text-align: justify;padding:20px">
+
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-3">
+                <h3><font color="#FFFFFF">CDAC ALumni</font></h3>
+            </div></div>
+         <div class="row">
+             <div class="col-sm-1"></div>
+            <div class="col-sm-9" style="font-size: 13px;">
+<h5><font color="#666" face="Roboto" >Established in year 2000, The institute is recognised countrywide as a leader in the
+                field of engineering education and research. Reputed for the outstanding calibre of students graduating from its undergraduate programmes ..
+<br><br><a style="padding-left:50px" href="/about/"> Know More</a>
+</font></h5> </div>
+        </div>
+    <div class="row">
+    <div class="col-sm-12">
+        <br><br>
+    </div>
+</div>
+
+</footer>
+
+</div>
+<script>  $(function() {
+
+    $('#search').keyup(function() {
+
+        $.ajax({
+            type: "GET",
+            url: "/searcht/",
+            data: {
+                'search_text' : $('#search').val(),
+                'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+    });
+});
+
+function searchSuccess(data, textStatus, jqXHR)
+{
+    $('#search-results').html(data)
+}</script>
+
+</body>
+</html>

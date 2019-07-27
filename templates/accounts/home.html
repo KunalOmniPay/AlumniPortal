@@ -1,0 +1,199 @@
+
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/js/mdb.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<!-- Compiled and minified CSS -->
+<style>
+.nav-item:hover{
+  border-bottom: blue 3px solid;
+
+}
+#s:hover{background-color:azure}
+    #card:hover{
+background-color:azure;
+box-shadow: 0 20px 20px 0 rgba(0,0,0,0.2);
+transition: 5ms ease}
+</style>
+</head>
+<body style="background-color:#EDEFEF">
+
+
+<div class="container-fluid">
+    <div class="row">
+&nbsp;<nav class="navbar navbar-expand-lg navbar-light" style="z-index:10;position:fixed;background-color:white;width:100%;font-size:12pt;font-family:Arial Rounded MT Bold;font-weight:bold">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto">
+        <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+      </ul>
+      <form class="form-inline col-3"  style="
+    margin-top: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-top-width: 20px;
+    margin-bottom: 0px;
+" role="search" method="post" action="/search/">{% csrf_token %}
+      <input class="form-control" id="search" type="search" placeholder="search for people or job" name="q"  value="{{ request.GET.q }}">
+                              <ul id="search-results" style="position: absolute;top:60px;left:-35px;z-index: 1"></ul>
+
+      <button class="btn btn-primary col-1" style="height:38px;padding-top:10px;padding-left:18px;width:5px;margin-left:0px" type="submit"><i class="fas fa-search"></i></button>
+    </form>
+      <ul class="navbar-nav mx-5">
+     <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/" ><br><i style="padding-left:30%" class="fas fa-home"></i><br>Home</a>
+      </li>
+     <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/validj" ><br><i style="padding-left:30%" class="fas fa-briefcase"></i><br>Jobs</a>
+      </li>
+           <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/network"><br><i style="padding-left:30%" class="fas fa-users"></i><br>Network</a>
+      </li>
+       <li class="nav-item" style="">
+        <a style="padding-left:20px" class="nav-link" href="/validp" ><br><i style="padding-left:30%" class="fas fa-user"></i><br>My Profile</a>
+      </li>
+
+          <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/batch"><br><i style="padding-left:30%" class="fas fa-user-friends"></i><br>Batchmates</a>
+      </li>
+           <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/year"><br><i style="padding-left:30%" class="fas fa-book-open"></i><br>Yearbook</a>
+      </li>
+
+
+
+
+
+         <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/message"><br><i style="padding-left:30%" class="fas fa-comment"></i><br>Message</a>
+      </li>
+       <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/logout"><br><i style="padding-left:30%" class="fas fa-power-off"></i><br>Logout</a>
+      </li>
+
+
+
+
+
+
+    </ul>
+  </div>
+    </nav></div></div>
+
+<div class="container-fluid">
+<div class="row" style="background-color:#000066;margin-top:70px"><br>
+<div class="col-sm-2 mx-3 my-2" style="padding:0.3%;background-color:#3333FF; border-radius:2%">
+	<p style="text-align: center;padding-top: 8px;padding-bottom: 0px;height: 30px;">
+	<b>
+	<font color="white" size="5" face="Arial Rounded MT Bold">Hi! {{ request.user }}</font></b></div>
+    &nbsp;</div></div>
+
+
+<br><br>
+
+<div class="container-fluid" style="padding-left:30px">
+    <div class="row">
+
+            <div class="col-md-3" style="margin-left:30px;margin-right:30px;color:gray;padding-left:25px;padding-bottom:25px;padding-top:30px;background-color:white;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);height:300px">
+                <div class="row" style="font-size:20px"><div class="col-9"><i class="fas fa-user-friends"></i>&nbsp;&nbsp;Connections</div><div class="col-1">{{ countf }}</div> </div>
+                        <br>  <div class="row" style="font-size:20px"><div class="col-9"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;Pending requests</div><div class="col-1">{{ count }}</div> </div>
+                        <br>  <div class="row" style="font-size:20px"><div class="col-9" style="padding-right:0px"><i class="far fa-paper-plane"></i>&nbsp;&nbsp;Sent Friend Requests</div><div class="col-1">{{ counts }}</div> </div>
+
+<br><br><hr><a href="/network" style="color:blue;padding-left:120px">My Network</a><hr>
+           </div>
+        <div class="col-md-8 my-3">
+
+        <div class="row">
+
+            <div class="col-md-12" style="position:relative;background-color:white;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top:20px"><br>
+      <div class="row" style="margin-left: 10px"><i class="fas fa-user-friends"></i>&nbsp;&nbsp;Add alumni to your Network</div><hr>
+               <div class="row" style="padding-bottom: 20px">
+                   {% for user_p, b, c, f, l, bat, t in my %}
+
+                <div class="col-md-3" style="margin-top:10px"><!-- Card -->
+<div class="card" style="transition: .5s ease" id="card">
+
+  <div class="row d-flex justify-content-center">
+  <img width="100" height="100" src="/media/{{ c }}" alt="Card image cap"  style="border-radius:50%;margin-top:30px;align:center">
+</div>
+  <!-- Card content -->
+  <div class="card-body">
+
+    <!-- Title -->
+    <h4 class="card-title" align="center"><a href="/uprof/{{ user_p.user }}">{{ f }} {{ l }}</a></h4>
+    <!-- Text -->
+    <p class="card-text"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{{ bat }}</p>
+      <p class="card-text"><i class="fab fa-android"></i>&nbsp;&nbsp;{{ t }}</p>
+    <!-- Button -->
+  <font color=white face="Arial Rounded MT Bold">
+                {% if b == 'not_friend' %}
+	<a href="/friend-request/send/{{ user_p.user.id }}" class="btn btn-primary btn-primary" style="font-weight:700;background-color:#000066;padding-left:20px;padding-right:20px"><i class="fa fa-plus"></i>
+Connect</a>
+            {% elif b == 'friend_request_sent' %}
+                <a href="/friend-request/cancel/{{ user_p.user.id }}" class="btn btn-primary btn-danger" style="font-weight:700;background-color:#CC0000;padding-left:20px;padding-right:20px"><i class="fas fa-times"></i>
+Cancel</a>
+
+                {% endif %}
+            </font>
+
+  </div>
+
+</div>
+<!-- Card --></div>{% endfor %}</div>
+
+            </div>
+        </div> </div>
+
+    </div>
+</div>
+<script>  $(function() {
+
+    $('#search').keyup(function() {
+
+        $.ajax({
+            type: "GET",
+            url: "/searcht/",
+            data: {
+                'search_text' : $('#search').val(),
+                'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+    });
+});
+
+function searchSuccess(data, textStatus, jqXHR)
+{
+    $('#search-results').html(data)
+}</script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

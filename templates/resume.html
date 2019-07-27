@@ -1,0 +1,307 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta charset="UTF-8">
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+
+    <title>Title</title>
+</head>
+<body>
+{% include 'modal.html' %}
+<div class="modal fade" id="modalprojectForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-warning" role="document">
+    <div class="modal-content">
+      <form action="/rpro/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Project Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ formp.title }}
+          <label data-error="wrong" data-success="" for="title">Project Title</label>
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formp.duration }}
+          <label data-error="Enter numbers only" data-success="" for="duration">Duration(in months)</label>
+        </div>
+
+        <div class="md-form">
+          {{ formp.description }}
+          <label data-error="wrong" data-success="" for="description">Description</label>
+        </div>
+        <div class="md-form mb-5">
+          {{ formp.link }}
+          <label data-error="wrong" data-success="" for="link">Link</label>
+        </div>
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-info" type="submit" value="Save">
+      </div>
+            </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modaljobForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-warning" role="document">
+    <div class="modal-content">
+      <form action="/rjob/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Project Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ formj.profile }}
+          <label data-error="wrong" data-success=" " for="profile">Profile</label>
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formj.organisation }}
+          <label data-error="wrong" data-success=" " for="organisation">Organisation</label>
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formj.startd }}
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formj.endd }}
+        </div>
+        <div class="md-form mb-5">
+          {{ formj.location }}
+          <label data-error="wrong" data-success=" " for="location">Location</label>
+        </div>
+        <div class="md-form">
+          {{ formj.description }}
+          <label data-error="wrong" data-success=" " for="descriptionj">Description</label>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-info" type="submit" value="Save">
+      </div>
+            </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalskillForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-warning" role="document">
+    <div class="modal-content">
+      <form action="/rskill/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Skill</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ forms.skill }}
+          <label data-error="wrong" data-success=" " for="skill">Skill</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-info" type="submit" value="Save">
+      </div>
+            </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalinternForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-warning" role="document">
+    <div class="modal-content">
+      <form action="/rint/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Project Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ formi.profile }}
+          <label data-error="wrong" data-success=" " for="profilei">Profile</label>
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formi.organisation }}
+          <label data-error="wrong" data-success=" " for="organisationi">Organisation</label>
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formi.duration }}
+            <label data-error="Enter numbers only" data-success=" " for="durationi">Duration(in months)</label>
+
+
+        </div>
+        <div class="md-form mb-5">
+          {{ formi.location }}
+          <label data-error="wrong" data-success=" " for="locationi">Location</label>
+        </div>
+        <div class="md-form">
+          {{ formi.description }}
+          <label data-error="wrong" data-success=" " for="descriptioni">Description</label>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-info" type="submit" value="Save">
+      </div>
+            </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modaltrainForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-warning" role="document">
+    <div class="modal-content">
+      <form action="/rtra/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Project Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ formt.program }}
+          <label data-error="wrong" data-success=" " for="programt">Program</label>
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formt.organisation }}
+          <label data-error="wrong" data-success=" " for="organisationt">Organisation</label>
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formt.duration }}
+            <label data-error="Enter numbers only" data-success=" " for="durationt">Duration(in months)</label>
+
+
+        </div>
+        <div class="md-form mb-5">
+          {{ formt.location }}
+          <label data-error="wrong" data-success=" " for="locationt">Location</label>
+        </div>
+        <div class="md-form">
+          {{ formt.description }}
+          <label data-error="wrong" data-success=" " for="descriptiont">Description</label>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-info" type="submit" value="Save">
+      </div>
+            </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modaljobForm">
+      Add Job</a></div>
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalprojectForm">
+    Add project</a>
+</div>
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalskillForm">
+      Add Skill</a></div>
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalinternForm">
+      Add Internship</a></div>
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modaltrainForm">
+      Add Training</a></div>
+{% for a in s %}
+<p>{{ a.skill }}    <a data-id="{% url 'skilleditv' a.id %}" class="edit">edit</a></p> <br>
+{% endfor %}
+{% for a in t %}
+<p>{{ a.program }}</p><p>{{ a.description }}</p><a data-id="{% url 'traineditv' a.id %}" class="tedit">edit</a>
+{% endfor %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js"></script>
+      <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+
+<script type="text/javascript"> $(function () {
+		 $(".edit").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      });
+ $(function () {
+		 $(".tedit").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      });
+
+ $(function () {
+		 $(".tedip").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      });
+
+  $(function () {
+		 $(".tediti").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      });
+
+   $(function () {
+		 $(".tedij").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      });
+
+</script>
+</body>
+</html>

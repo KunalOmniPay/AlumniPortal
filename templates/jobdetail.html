@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container-fluid">
+<div class="row" style="background-color:#000066;" id="yearrow"><br>
+<div class="col-sm-2 mx-3 my-2" style="padding:0%;background-color:#3333FF; border-radius:2%">
+   <p style="text-align: center;padding-top: 8px;padding-bottom: 0px;height: 30px;">
+   <b>
+   <a href="/my_profile"><font color=white size="4" face="Roboto">{{ request.user }}</font></a></b></div>
+    &nbsp;</div></div>
+<br><br>
+<div class="container " style="width:80% ;background-color:white">
+	<div class="row mx-2">
+		<b><font size="6" face="Arial Rounded MT Bold">&nbsp;Job Details</font></b>
+
+
+
+
+
+	</div>
+	<hr>
+	<div class="row mx-3">
+		<font size="5" color="#000066"><span class="fas fa-file-alt"></span>&nbsp;Basic</font></div><br>
+	<div class="row mx-1">
+
+		<div class="col-sm-8"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Company Name<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Company_name }}
+</div><br>
+		<div class="col-sm-4"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Designation<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Job_title }}
+		</div></div><br>
+	<div class="row mx-1">
+
+		<div class="col-sm-8"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Salary<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Salary }}
+</div>
+		<div class="col-sm-4"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Location<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Location }}
+		</div></div><br>
+	<div class="row mx-1">
+
+		<div class="col-sm-8"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Posted On<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Currentdate }}
+</div>
+		<div class="col-sm-4"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Application Deadline<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Deadline }}
+		</div></div>
+	<hr>
+	<div class="row"><div class="col-sm-5"><font size="5" color="#000066">&nbsp;&nbsp;<span class="fas fa-file-alt"></span>&nbsp;Description</font></div></div><br>
+	<div class="row mx-5" style="word-wrap:break-word"><p align="justify"><font color="#666666" style="font-size:13pt">{{ instance.About_role }}</font></p></div><br>
+	<div class="row mx-4"><b><font size="4">About {{ instance.Company_name }}({{ instance.link }})</font></b></div><br>
+	<div class="row mx-5"><p align="justify"><font color="#666666" style="font-size:13pt">{{ instance.About_company }}</font></p></div>
+	<hr>
+	<div class="row mx-3"><font size="6">Apply</font></div><br>
+
+<div class="row mx-3" style="border:2px dashed #666666; z-index:1" id="layer27">
+{% if count == check %}
+
+	<div class="col-sm-4" style="border-right-style:dotted; border-right-width:1px" id="layer30">
+<b>
+<font size="4" face="Roboto"><br><span class="fas fa-file-pdf"></span>&nbsp;Upload Resume<br>(pdf,docx,doc)
+&nbsp;</font></b></div>
+<div class="col-1"></div>
+<div  class="col-sm-7" id="layer29">
+	
+
+<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}<br>
+
+{% for field in form %}
+<div class = "form-group">
+   <div class="col-sm-offset-2 col-sm-10">
+     <span class="text-denger small">{{field.error}}
+
+     </span>
+
+   </div>
+      <div class="col-sm-10">{{field}}
+
+   </div>
+
+ </div>
+ {% endfor %}
+
+	<div class="row">
+		<div class="col-sm-5"></div>
+		<div class="mx-4" style="width: 175px; height: 50px;" id="layer28">
+
+             <input type="submit" name="Apply" class="btn btn-primary btn-primary" style="font-weight:700;background-color:#000066;width:200px"  >
+
+
+
+
+</div>
+	</div>
+
+
+
+      
+
+</form>
+	
+</div>
+
+{% else %}
+	<div class="col-sm-3"></div>
+	<div style="width: 463px;" id="layer31">
+<h2 style="font-size:3vw" align="center"><font face="Roboto" color="#3333FF">You had already Applied</font></h2></div>
+	
+	{% endif %}
+</div>
+
+
+
+
+		
+
+
+</div><br>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container-fluid">
+<div class="row" style="background-color:#000066;" id="arow"><br>
+<div class="col-sm-2 mx-3 my-2" style="padding:0%;background-color:#3333FF; border-radius:2%">
+   <p style="text-align: center;padding-top: 8px;padding-bottom: 0px;height: 30px;">
+   <b>
+   <a href="/my_profile"><font color=white size="4" face="Roboto">{{ request.user }}</font></a></b></div>
+    &nbsp;</div></div>
+<br><br>
+<div class="container " style="width:80% ;background-color:white">
+	<div class="row mx-2">
+		<b><font size="6" face="Roboto">&nbsp;Job Details</font></b>{% if instance.selected %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="#20b2aa" style="padding-top: 10px"><i class="fas fa-check-circle"></i>&nbsp;&nbsp;selected{% endif %}</font>
+
+
+
+
+
+	</div>
+	<hr>
+	<div class="row mx-3">
+		<font size="5" color="#000066"><span class="fas fa-file-alt"></span>&nbsp;Basic</font></div><br>
+	<div class="row mx-1">
+
+		<div class="col-sm-8"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Company Name<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Company_name }}
+</div><br>
+		<div class="col-sm-4"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Designation<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Job_title }}
+		</div></div><br>
+	<div class="row mx-1">
+
+		<div class="col-sm-8"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Salary<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Salary }}
+</div>
+		<div class="col-sm-4"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Location<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Location }}
+		</div></div><br>
+	<div class="row mx-1">
+
+		<div class="col-sm-8"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Posted On<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Currentdate }}
+</div>
+		<div class="col-sm-4"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Application Deadline<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Deadline }}
+		</div></div>
+	<hr>
+	<div class="row"><div class="col-sm-5"><font size="5" color="#000066">&nbsp;&nbsp;<span class="fas fa-file-alt"></span>&nbsp;Description</font></div></div><br>
+	<div class="row mx-5" style="word-wrap:break-word"><p align="justify"><font color="#666666" style="font-size:13pt">{{ instance.About_role }}</font></p></div><br>
+	<div class="row mx-4"><b><font size="4">About {{ instance.Company_name }}</font></b></div><br>
+	<div class="row mx-5"><p align="justify"><font color="#666666" style="font-size:13pt">{{ instance.About_company }}</font></p></div>
+
+
+</div><br>
+
+{% endblock %}

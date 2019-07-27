@@ -1,0 +1,201 @@
+{% load staticfiles %}
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+<!-- Font Awesome --><link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+#cl:hover{background-color:azure}
+#dw{visibility:hidden}
+#cl:hover #dw{visibility:visible}
+#s:hover{background-color:azure}
+.flip-card {
+
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.neapolitan {
+    margin-left:-15;
+    margin-right:-15;
+    margin-top:-20;
+    background:linear-gradient(to right,#7dc57c 0,#7dc57c 16.6%,#1295c9 16.6%,#1295c9 33.2%,#815874 33.2%,#815874 49.8%,#fada58 49.8%,#fada58 66.4%,#e15554 66.4%,#e15554 83%,#ff8000 83%,#ff8000 99.6%);
+    position:relative;
+    height:8px;
+}
+
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #000099;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.collapsible {
+  background-color: #0713A3;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #000066;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: white;
+}
+
+
+.but {
+ 	display: inline-block;
+	padding: 10px 14px;
+	color: #FFF;
+	border: 1px solid #FFF;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 120%;
+	background-color: rgba(255,255,255, 0);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-transition: background-color 400ms ease;
+	-moz-transition: background-color 400ms ease;
+	transition: background-color 400ms ease;
+	cursor: pointer;}
+
+.but:hover {
+  background-color: black;
+  color: white;
+}
+
+
+.nav-item:hover{
+  border-bottom: blue 3px solid;
+
+}
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/media/ll.gif') 50% 50% no-repeat rgb(249,249,249);
+
+}
+    </style>
+</head>
+<body><form method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Skill</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ forms.skill }}
+        </div>
+           <div class="md-form mb-3">
+          {{ forms.level }}
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-info" type="submit" value="Save">
+      </div>
+            </form>
+
+
+<script>
+   $("#skill").change(function () {
+      var skills = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validate_skill/',
+        data: {
+          'skill': skills
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("This skill is already in your Resume");
+          }
+        }
+      });
+
+    });
+
+</script>
+<script src="{% static 'js/main.js' %}"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+
+
+</body>
+</html>
+

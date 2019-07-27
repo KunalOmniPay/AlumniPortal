@@ -1,0 +1,167 @@
+{% load staticfiles %}
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+<!-- Font Awesome --><link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+
+</head>
+
+<body style="background-color:#EDEFEF">
+
+
+<form action="/rint/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Insternship Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ formt.profile }}
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formt.organisation }}
+        </div>
+
+         <div class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <label>Start date</label>
+        <div class="ui calendar" id="rangestartie">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            {{ formt.startd }}
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>End date</label>
+        <div class="ui calendar" id="rangeendie">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            {{ formt.endd }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <div class="md-form mb-5">
+          {{ formt.location }}
+        </div>
+        <div class="md-form">
+          {{ formt.description }}
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-primary" type="submit" value="Save">
+      </div>
+            </form>
+
+
+
+
+
+<script type="text/javascript">
+
+            $(function () {
+                var today = new Date();
+
+
+                $('#rangestartie').calendar({
+                    type: 'date',
+                    maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+                    formatter: {
+                        date: function (date, settings) {
+                            if (!date) return '';
+                            var day = date.getDate();
+                            var month = date.getMonth() + 1;
+                            var year = date.getFullYear();
+                            return year + '-' + month + '-' + day;
+                        }
+                    },
+
+                    endCalendar: $('#rangeendie')
+                });
+                $('#rangeendie').calendar({
+                    type: 'date',
+
+                    formatter: {
+                        date: function (date, settings) {
+                            if (!date) return '';
+                            var day = date.getDate();
+                            var month = date.getMonth() + 1;
+                            var year = date.getFullYear();
+                            return year + '-' + month + '-' + day;
+                        }
+                    },
+                    startCalendar: $('#rangestartie')
+                });
+            });
+</script>
+<script>
+
+        $("#enddi").blur(function () {
+      var endd = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validate_dateie/',
+        data: {
+            'startd':$('#startdi').val(),
+          'endd': endd
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("Your start date and end date coincides with already stored trainings.please enter valid date");
+          }
+        }
+      });
+
+    });
+</script>
+	<script src="{% static 'js/main.js' %}"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+
+
+</body>
+</html>
+
+
+

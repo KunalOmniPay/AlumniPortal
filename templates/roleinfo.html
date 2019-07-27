@@ -1,0 +1,145 @@
+{% load staticfiles %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+<meta http-equiv="Content-Language" content="en-us">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="all">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <style>
+.btn {
+  background-color: #990000;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+.button {
+  background-color: DodgerBlue; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {border-radius: 2px;}
+.button2 {border-radius: 4px;}
+.button3 {border-radius: 8px;}
+.button4 {border-radius: 12px;}
+.button5 {border-radius: 50%;}
+</style>
+    <style>
+        .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/media/ll.gif') 50% 50% no-repeat rgb(249,249,249);
+
+}
+    </style>
+    <script type="text/javascript">
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="background-color:#333399">
+<div class="loader"></div>
+
+
+<BR>
+<p>     &nbsp;
+{% for field in form %}
+  {{field.error}}
+{% endfor %}
+<div class="container"  style="position:relative;height:500px;top:20px">
+
+  <div class = "row">
+      <div class="col-sm-2"></div>
+   <div class="col-sm-5 col-md-5 " style="position:relative;left:10%">
+    <div class = "panel panel-default ">
+      <div class="panel-body">
+
+<form action="/roleinfo/" style="background-color:white;height:700px"  method="POST" role="form"  enctype="multipart/form-data">{% csrf_token %}
+    <div class="row d-flex justify-content-center" style="padding-top:50px">
+    <img border="0" src="../media/Cdac_logo.png" width="188" height="106">
+</div>
+    <div class="row">
+        <div class="col-sm-12">
+&nbsp; <br><font style="font-family:Roboto" color="#000066"><b>&nbsp;&nbsp;&nbsp;Step {{ wizard.steps.step1 }} OF {{ wizard.steps.count }}</b></font></p>
+ <br>   <table>
+    <div class="col-md-9" style="position:relative;left: 041px;padding-right: 0px;right: 00px;" >
+  {{ wizard.management_form }}
+  {% if wizard.form.forms %}
+     {{ wizard.form.management_form }}
+     {% for form in wizard.form.forms %}
+          {{ form }}
+      {% endfor %}
+  {% else %}
+        {% for field in wizard.form %}
+ <div class = "form-group" style="margin-right:10%">
+   <div class="col-sm-8">
+     <span class="text-denger small">{{field.error}}
+
+     </span>
+
+   </div>
+   <label class="control-label col-sm-1">
+
+   </label>
+   <div class="col-sm-12">{{field}}
+
+   </div>
+
+ </div>
+ {% endfor %}
+  {% endif %}
+    </div>
+</table>
+
+   <div class="form-group">
+
+     <div class="btn-group" role="group" aria-label="Basic example">
+        {% if wizard.steps.prev %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <button class="button button1" formnovalidate="formnovalidate"  name="wizard_goto_step" type="submit" value="{{wizard.steps.prev }}"><i class="fa fa-angle-double-left"></i>
+	<font face="Roboto">Prev step</font></button>
+ {% endif %}
+         </div><br>
+       <br>
+    <div class="col-sm-6">
+  <input class="btn btn-success" type="submit" value="submit" style="position:absolute;height:40px;left:50px;width:350px ;background-color:green">
+    </div>
+   </div>
+</div>
+</div>
+</form>
+</div>
+    </div>
+   </div>
+  </div>
+</div>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

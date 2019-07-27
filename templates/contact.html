@@ -1,0 +1,74 @@
+{% extends 'index.htm' %}
+
+
+{% block body %}
+ <div class="container-fluid" style="background-color: rgba(255, 255, 255, 0.1); ">
+<hr style="background-color:#003399;height:2px;margin-top:20px"></div>
+<div class="row" style="margin-right:0px;margin-top:50px">
+	<div class="col-1"></div>
+	<font size="7"  face="Roboto" color="#666666" align="center">Contact Us</font></div>
+
+<hr style="width:90%">
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-1"></div>
+		<div class="col-sm-3">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.6226613521562!2d75.8251082145179!3d26.788295571885172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dc99f213803bb%3A0xdfb9dec6d7d66948!2sC-DAC+ATC+NETCOM!5e0!3m2!1sen!2sus!4v1558075636880!5m2!1sen!2sus" width="430" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+</div>
+<div class="col-sm-2"></div>
+
+<div class="col-sm-1"></div>
+		<div class="col-sm-4" style="padding-left:50px"><br>
+			<font  face="Roboto" color="#808080" size="4"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Get in touch with us!<b></font>
+
+
+
+<hr style="width:90%">
+
+
+
+<br>
+
+<i class="fas fa-mobile-alt"></i>&nbsp;&nbsp; Phone :<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font color="#808080">{{ c.phone1 }} , {{ c.phone2 }}</font>
+
+
+
+
+<hr style="width:90%"><br>
+<i class="fas fa-envelope"></i>&nbsp;&nbsp; Email : <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#808080"> {{ c.email }}
+</font>
+
+
+
+
+
+<hr style="width:90%">
+
+
+
+
+<i class="fas fa-globe-asia"></i>&nbsp; Web : <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#808080">
+www.cdac.in<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;www.netcomedu.in</font>
+
+
+
+<hr style="width:90%">
+
+
+
+<br>
+<i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp; Location :<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font  face="Roboto" color="#808080">{{ c.location }}</font>
+
+
+
+
+</div></div></div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<br>
+<div class="container-fluid  d-flex justify-content-center" style="width:90%">
+    
+    <div class="form-v10-content">
+        <div class="row">
+            <form class="form-detail" action="#" method="POST" id="myform">{% csrf_token %}
+                <div class="col-sm-6">
+                    <div class="form-left" style="padding-bottom:0px">
+                        <h2>General Infomation</h2>
+                        
+                        <div class="form-group">
+                            <div class="form-row form-row-1">
+                                {{ form.Company_name }}
+                            </div>
+                            <div class="form-row form-row-2">
+                                {{ form.Job_title }}
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            {{ form.Location }}
+                        </div>
+                        
+                        <div class="form-row ">
+                            {{ form.Salary }}
+                        </div>
+                        
+                        <div class="ui calendar" id="example11">
+                            <div class="col-9">
+                                <div class="ui input" style="padding-left:40px;width:130%;margin-bottom:10px">
+                                    <input type="text" placeholder="Deadline" name='date' class="form-control" style="width:100%;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-right" style="height:100%;margin-bottom: -15px">
+                        <h2>Company Information</h2>
+                        <div class="form-row">
+                            {{ form.About_company }}
+                        </div>
+                        <div class="form-row">
+                            {{ form.About_role }}
+                        </div>
+                        
+                        
+                        <input type="submit" value="submit" class="register" style="margin: 10%  28%  5%">
+                    </div>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

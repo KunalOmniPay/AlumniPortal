@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+ {% block body %}
+
+<div class="container-fluid" style="margin-top:120px">
+    <div class="row" style="padding: inherit;">
+        <div class="col-md-4" style="background-color:white;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);height:400px"><p align="center"><img class="my-4" border="0" src="/media/{{ obj.Profile_photo }}" width="217px" height="200px" style="border-radius:50%"></p>
+
+            <p align="center"><font face="Roboto"><font size="5"><b>{{ obj.First_name }} {{ obj.Last_name }}</b></font></font><br>
+            <font color="#666666" face="Roboto" size="4">Class of {{ obj.Batch }}<br>Alumni No : {{ obj.id }}</font><br>{% if y == 1 %}(In Network){% endif %}{% if y == 0 %}(Not In Network)
+                {% if b == 1 %}<br> <a href="/friend-request/cancel0/{{ user.id }}/{{ username }}" style="color: red"><i class="fas fa-times"></i>&nbsp;&nbsp;
+                    Cancel Request</a>{% endif %}{% if b == 0 %}<br><a href="/friend-request/send0/{{ user.id }}/{{ username }}"><i class="fa fa-plus"></i>&nbsp;&nbsp;Connect</a>
+{% endif %}{% endif %}</div>
+
+        <div class="col-md-8" style="position:relative;">
+            <div class="row" style="background-color:white;margin: auto;
+    margin-top:7px; position:relative;right:0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); margin-bottom:3px;">
+                <div class="col-sm-12 my-3" >
+                    <div class="row">
+                        <div class="col-11">
+                <i class="fas fa-info-circle" style="font-size:20px"></i>&nbsp;&nbsp;<font size="5">Contact Information </font>
+                        </div>
+                    </div>
+                <hr>
+
+                <i class="far fa-envelope mx-5">&nbsp;&nbsp;<font size="4"></font>
+<a href="mailto:kunagg25@gmail.com"><font size="4" face="Roboto">{% if y == 1 %}{{ obj.Email }}{% endif %}{% if y == 0 %}a****z@gmail.com{% endif %}</font></a></i>
+                    <br><br>
+                    <i class="fas fa-mobile-alt mx-5"><font size="4">&nbsp;&nbsp;</font><font size="4" face="Roboto" color="#808080">{% if y == 1 %}{{ obj.Mobile_no }}{% endif %}{% if y == 0 %}7********5{% endif %}<br>
+                    </font></i><br><br><i class="fa fa-map-marker-alt mx-5"><font color="#808080" size="4" face="Roboto">&nbsp;&nbsp;
+{{ obj.Address }}</font></i>
+
+</div></div>
+     <div class="row" style="position:relative; margin-right: 15px;
+    margin-left: -10px; background-color:white;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);left:12px;margin-top:7px">
+                <div class="col-sm-12 my-3">
+                    <div class="row"><div class="col-11">
+                <i class="fas fa-info-circle" style="font-size:20px"></i>&nbsp;&nbsp; </font><font size="5">CDAC Life</font>
+                </div>
+
+                    </div>
+                <hr>
+
+                <i class="fas fa-user-graduate mx-5">&nbsp;&nbsp;<font size="4"></font>
+<font size="4" face="Roboto">{{ obj.Role }}</font></i>
+                    <br><br>
+                    <i class="fab fa-android mx-5"><font size="4">&nbsp;&nbsp;</font><font size="4" color="#808080" face="Roboto">&nbsp;{{ obj.Technology }}<br>
+                    </font></i><br><br>
+
+</div>
+            </div>{% if z %}
+             <div class="row" style="background-color:white;margin: auto;
+    margin-top:7px; position:relative;right:0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); margin-bottom:3px;">
+                <div class="col-md-12 my-3" >
+                    <div class="row">
+                        <div class="col-11">
+                <i class="fab fa-android" style="font-size:20px"></i>&nbsp;&nbsp;&nbsp;<font size="5">Expertise</font></div>
+
+                    </div>
+
+                <hr>
+
+                &nbsp;&nbsp;{% for s in skill %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="#808080">&nbsp;{{ s.skill }} ({{ s.level }})<br><br>
+                            {% endfor %}
+
+</div>
+            </div>{% endif %}
+
+			 <div class="row" style="background-color:white;margin: auto;
+    margin-top:7px; position:relative;right:0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); margin-bottom:3px;">
+                <div class="col-md-12 my-3" >
+                    <div class="row">
+                        <div class="col-11">
+                <i class="fas fa-graduation-cap" style="font-size:20px"></i>&nbsp;&nbsp;&nbsp;<font size="5">Education</font></div>
+
+                    </div>
+
+                <hr>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="4">{{ obj.College }}</font>
+                    <br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="#808080">&nbsp;{{ obj.Degree }}<br>
+                    </font><br><font color="#808080" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ obj.Department }}</font>
+
+</div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+	</div>
+{% endblock %}

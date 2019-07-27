@@ -1,0 +1,177 @@
+{% load staticfiles %}
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'strip.css' %}">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<!-- Compiled and minified CSS -->
+    <style>
+        .nav-item:hover{
+  border-bottom: blue 3px solid;
+
+}
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/media/ll.gif') 50% 50% no-repeat rgb(249,249,249);
+
+}
+    </style>
+
+    <script type="text/javascript">
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>
+
+
+</head>
+<body style="background-color:#EDEFEF">
+<div class="loader"></div>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+<nav class="navbar navbar-expand-lg navbar-light" style="z-index:10;position:fixed;background-color:white;width:100%;font-size:12pt;font-family:Railway Regular;">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+         <ul class="navbar-nav mr-auto">
+        <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+      </ul>
+    <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/" ><br><i id="icon" class="fas fa-home"></i><br>Home</a>
+      </li>
+     <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/validj" ><br><i id="icon" class="fas fa-briefcase"></i><br>Jobs</a>
+      </li>
+           <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/network"><br><i id="icon" class="fas fa-users"></i><br>Network</a>
+      </li>
+       <li class="nav-item" style="">
+        <a style="padding-left:20px" class="nav-link" href="/validp" ><br><i id="icon" class="fas fa-user"></i><br>My Profile</a>
+      </li>
+
+          <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/batch"><br><i id="icon" class="fas fa-user-friends"></i><br>Batchmates</a>
+      </li>
+           <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/year"><br><i id="icon" class="fas fa-book-open"></i><br>Yearbook</a>
+      </li>
+
+
+
+
+
+         <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/network"><br><i id="icon" class="fas fa-comment"></i><br>Message</a>
+      </li>
+       <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/logout"><br><i id="icon" class="fas fa-power-off"></i><br>Logout</a>
+      </li>
+
+
+
+
+
+    </ul>
+  </div>
+    </nav></div></div>
+
+ <div class="container-fluid">
+<div class="row" style="background-color:#000066;" id="aplstrip"><br>
+<div class="col-sm-2 mx-3 my-2" style="padding:0%;background-color:#3333FF; border-radius:2%">
+   <p style="text-align: center;padding-top: 8px;padding-bottom: 0px;height: 30px;">
+   <b>
+   <a href="/my_profile"><font color=white size="4" face="Roboto">{{ request.user }}</font></a></b></div>
+    &nbsp;</div></div>
+<br><br>
+<div class="container">
+	{% for obj in list %}
+    <div class="row d-flex justify-content-center">
+<div class="col-sm-9 ">
+
+    <div class="card">
+    <div class="card-body">
+    <b><font size="5">{{ obj.Job_title }} |</font></b>&nbsp; <font color="#D2DEDF">&nbsp;</font><font size="4" color="#225555">{{ obj.Company_name }}
+	</font><br><br>
+
+        <div class="row">
+              <div class="col-1"></div>
+            <div class="col-4">Location<br>{{ obj.Location }}</div>
+            <div class="col-4">Deadline<br>{{ obj.Deadline }}</div>
+            <div class="col-3">Salary<br>{{ obj.Salary }}</div>
+        </div>
+<br>
+    <div class="row"><br><br>
+        <div class="col-9"><font face="Roboto" color="#C6C8CA">&nbsp;&nbsp;&nbsp;&nbsp;<b>&nbsp;</b></font><b><font size="4" face="Roboto" color="#666666">Posted By:</font></b><font face="Roboto" color="#666666"><font size="4">&nbsp; {{ obj.Posted_by }}</span>&nbsp;<br>
+	</font>
+
+
+
+
+</font></span></b></font></div>
+
+	<div class="col-3">
+<a href="/applyjob/{{ obj.id }}" class="btn btn-primary btn-primary" style="font-weight:700;background-color:#000066">
+<font color="#000000" face="Roboto"></font>
+<font color=white face="Roboto"><span class="fa fa-eye">&nbsp; </span>view</font></a>
+
+        &nbsp;</div></div></div>
+  </div>
+  <br>
+    </div></div>
+	{% endfor %}
+</div>
+{% if z == 0 %}
+<p align="center" style="margin-bottom: 100px"><img src="/media/no.png" width="200" height="200"><br><br>
+    <br><font size="5" >You had not applied for any job.</font><br>
+</p>
+{% endif %}
+<!-- Footer -->
+<footer style="background-color: #1E3953;
+    text-align: justify;padding:20px">
+
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-3">
+                <h3><font color="#FFFFFF">CDAC ALumni</font></h3>
+            </div></div>
+         <div class="row">
+             <div class="col-sm-1"></div>
+            <div class="col-sm-9" style="font-size: 13px;">
+<h5><font color="#666" face="Roboto" >Established in year 2000, The institute is recognised countrywide as a leader in the
+                field of engineering education and research. Reputed for the outstanding calibre of students graduating from its undergraduate programmes ..
+ <br><br><a style="padding-left:50px" href="/about/"> Know More</a>
+</font></h5> </div>
+        </div>
+    <div class="row">
+    <div class="col-sm-12">
+        <br><br>
+    </div>
+</div>
+
+</footer>
+
+</body>
+</html>

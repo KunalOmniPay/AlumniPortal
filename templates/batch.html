@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+
+<br>
+<br>{% if b %}
+<div class="container-fluid" style="margin-top: 50px"><h1>Alumni of {{ b }}</h1></div>
+{% endif %}
+<div class="row" style="margin-top:60px">
+<div class="col-md-9">
+
+          <div class="row" style="margin-left: 20px;" >
+{% for obj in obj_list %}
+
+                            <div class="col-md-3"><!-- Card -->
+<div class="card">
+
+  <div class="row d-flex justify-content-center">
+  <img width="100" height="100" src="/media/{{ obj.Profile_photo }}" alt="Card image cap"  style="border-radius:50%;margin-top:30px;align:center">
+</div>
+  <!-- Card content -->
+  <div class="card-body">
+
+    <!-- Title -->
+    <h4 class="card-title" align="center"><a href="/uprof1/{{ obj.id }}">{{ obj.First_name }} {{ obj.Last_name }}</a></h4>
+    <!-- Text -->
+    <p class="card-text"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{{ obj.Batch }}</p>
+      <p class="card-text"><i class="fab fa-android"></i>&nbsp;&nbsp;{{ obj.Technology }}</p>
+      <p class="card-text"><i class="fas fa-university"></i>&nbsp;&nbsp;{{ obj.College }}</p>
+    <!-- Button -->
+
+
+  </div>
+
+</div>
+<!-- Card --></div>
+
+
+
+       {% endfor %}
+
+          </div><br><br></div>
+
+</div>
+{% if z == 0 %}
+<p align="center" style="margin-bottom: 100px;margin-top:-50px"><img src="/media/no_result_491590.png" width="300" height="300"><br><br>
+    <br><font size="5" >No Alumni of {{ b }} batch</font><br>
+</p>
+{% endif %}
+{% endblock %}

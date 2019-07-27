@@ -1,0 +1,179 @@
+
+{% load staticfiles %}
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="{% static 'form.css' %}" type="text/css" media="all">
+<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="all">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+
+<title>C-DAC Alumni</title>
+</head>
+
+<body style="background-color:#EDEFEF">
+
+
+<div class="container-fluid" style="background-color:white;position:relative;">
+
+    <div class="row">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<i class="fas fa-phone"></i>+918171809114 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:cdac@gmail.com">cdac@gmail.com</a>&nbsp;
+</div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+<nav class="navbar navbar-expand-lg navbar-light" style="position:relative;background-color:white;width:100%;font-size:12pt;font-family:Railway Regular;font-weight:bold">
+  <br>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+   <ul class="navbar-nav mr-auto">
+         <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+      </ul>
+  <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/" ><br><i style="padding-left:30%" class="fas fa-home"></i><br>Home</a>
+      </li>
+
+
+
+         <li class="nav-item" style="">
+        <a style="padding-left:20px" class="nav-link" href="/about" ><br><i style="padding-left:30%" class="fas fa-edit"></i><br>About</a>
+      </li>
+         <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/contact"><br><i style="padding-left:30%" class="far fa-address-card"></i><br>Contact</a>
+      </li>
+
+
+
+         <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/logout"><br><i style="padding-left:30%" class="fas fa-power-off"></i><br>Logout</a>
+      </li>
+
+
+
+
+    </ul>
+  </div>
+</nav></div>
+</div>
+
+
+
+<div class="container-fluid" style="position:absolute;height:28%; z-index: 1;background-color:#000099" >
+
+&nbsp;</div><br><br><br><br>
+<div style="text-align:center" id="layer20">
+<div  style="position:absolute;z-index:2;right:20%;width:60%;" id="layer1">
+
+<div class="row"><div class="col-sm-12">
+    <div class="card">
+
+  <h5 class="card-header info-color white-text text-center py-4">
+    <strong>Step 4 of 4</strong>
+  </h5>
+
+  <!--Card content-->
+  <div class="card-body px-sm-12 pt-0">
+      <div class="row">
+
+  <div class="col-sm-6" style="background-color:white">
+         <br><br><br><br>
+      <img src="/media/Cdac_logo.png" width="50%" height="80">
+      <br>
+      <p style="font-family:Roboto;font-size:12pt"><br>About You in CDAC</p>
+
+</div>
+          <div class="col-sm-6">
+    <!-- Form -->
+    <form class="text-center" method="post" action="" enctype="multipart/form-data" style="color: #757575;padding-top: 20px">{% csrf_token %}
+
+        <img id="img_id" src="/media/user.png" alt="your image" style="width:100px;height:100px;border-radius: 50%"/>
+
+        <p align="center"> {{ form.as_p }}</p>
+
+
+    <div class="row">
+        <a href="/prev3" class="btn btn-outline-info btn-rounded mx-3 my-4 waves-effect z-depth-0 col-5">Previous</a>
+<div class="col-1"></div>
+        <button name="login" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0 col-5" type="submit">Submit</button>
+</div>
+
+
+        <hr>
+
+
+    </form></div>
+    <!-- Form -->
+  </div>
+  </div>
+
+</div>
+    </div></div></div></div>
+
+<!-- JS -->
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+
+<script type="text/javascript">
+
+
+        function upload_img(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img_id').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+

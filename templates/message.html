@@ -1,0 +1,322 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <link rel="stylesheet" type="text/css" href="{% static 'strip.css' %}">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <!-- Compiled and minified CSS -->
+    
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    
+    <style>
+        #l {
+            background-color: white;
+        }
+        
+        #l:hover {
+            background-color: azure;
+        }
+        
+        .nav-item:hover {
+            border-bottom: blue 3px solid;
+            
+        }
+        
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('/media/ll.gif') 50% 50% no-repeat rgb(249, 249, 249);
+            
+        }
+    </style>
+    
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        });
+    </script>
+    <title>Title</title>
+</head>
+<body style="background-color:#EDEFEF">
+<div class="loader"></div>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light" id="navbar-example2"
+             style="z-index:10;position:fixed;background-color:white;width:100%;font-size:12pt;font-family:Railway Regular;">
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mr-auto">
+                    <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+                </ul>
+                <ul class="navbar-nav mx-5">
+                    <li class="nav-item">
+                        <a style="padding-left:20px" class="nav-link" href="/"><br><i id="icon" class="fas fa-home"></i><br>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="padding-left:20px" class="nav-link" href="/validj"><br><i id="icon"
+                                                                                            class="fas fa-briefcase"></i><br>Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="padding-left:20px" class="nav-link" href="/network"><br><i id="icon"
+                                                                                             class="fas fa-users"></i><br>Network</a>
+                    </li>
+                    <li class="nav-item" style="">
+                        <a style="padding-left:20px" class="nav-link" href="/validp"><br><i id="icon"
+                                                                                            class="fas fa-user"></i><br>My
+                            Profile</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a style="padding-left:20px" class="nav-link" href="/batch"><br><i id="icon"
+                                                                                           class="fas fa-user-friends"></i><br>Batchmates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="padding-left:20px" class="nav-link" href="/year"><br><i id="icon"
+                                                                                          class="fas fa-book-open"></i><br>Yearbook</a>
+                    </li>
+                    
+                    
+                    <li class="nav-item">
+                        <a style="padding-left:20px" class="nav-link" href="/message"><br><i id="icon"
+                                                                                             class="fas fa-comment"></i><br>Message</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="padding-left:20px" class="nav-link" href="/logout"><br><i id="icon"
+                                                                                            class="fas fa-power-off"></i><br>Logout</a>
+                    </li>
+                
+                
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="row" style="background-color:#000066;" id="jrow"><br>
+    <div class="col-2 mx-4 my-2" style="padding:0%;background-color:#3333FF; border-radius:2%;height:38px">
+        <p style="text-align: center;padding-top: 8px;padding-bottom: 0px;height: 30px;">
+            <b>
+                <a href="/my_profile"><font color=white size="4" face="Roboto">{{ request.user }}</font></a></b></div>
+</div>
+
+
+<br>
+{% include '_modal.html' %}
+<div class="container-fluid">
+    <div class="row" style="margin-left: 15px;margin-right: 15px;">
+        <!-- Material form contact -->
+        <div class="card col-md-3" style="height: 380px">
+            
+            <h5 class="card-header info-color white-text text-center py-4">
+                <strong>Send Message</strong>
+            </h5>
+            
+            <!--Card content-->
+            <div class="card-body px-lg-5 pt-0">
+                
+                <!-- Form -->
+                <form class="text-center" style="color: #757575;" action="" method="post">{% csrf_token %}
+                    
+                    <!-- Name -->
+                    
+                    
+                    <!-- Subject -->
+                    <span>To : </span>
+                    <select class="mdb-select md-form" name="name">
+                        <option value="" disabled>Choose option</option>
+                        {% for i in u %}
+                        <option>{{ i.user }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                    <!--Message-->
+                    <div class="md-form">
+                        <textarea id="materialContactFormMessage" name="message" placeholder="Message"
+                                  class="form-control md-textarea" rows="3" required="required"></textarea>
+                    </div>
+                    
+                    <!-- Copy -->
+                    
+                    <!-- Send button -->
+                    <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect"
+                            type="submit">Send
+                    </button>
+                
+                </form>
+                <!-- Form -->
+            
+            </div>
+        
+        </div>
+        <div class="col-md-9">
+            <div class="row mx-lg-4 my-xs-3">
+                <div class="col-md-12" id="l"
+                     style="transition: .5s ease;position:relative;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)">
+                    <div class="row" style="padding-top:15px;padding-left:15px">{% if count %}<i
+                            class="fas fa-comment"></i>&nbsp;&nbsp; Messages ({{ count }}){% endif %}{% if count == 0 %}<i
+                            class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;No Messages{% endif %}
+                    </div>
+                    <hr>
+                    {% for m, f, l, p in list %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-8"> <p align="justify"><font size="4" face="Roboto">{{ m.message }}</font><font face="Roboto"><br><br>
+	<font color="#666666" size="3">From-{{ f }} {{ l }},<font size="1">{{ m.datetime }}</font></font></p></font></div>
+                <div class="col-2 my-3"><a  href="/delete_messagen/{{ m.id }}" class="btn btn-outline-danger waves-effect" style="padding-left: 10px;padding-top: 10px;padding-right: 10px; padding-bottom: 10px;"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;Delete</a> </div>
+            <div class="col-2 my-3"><a style="padding-left: 10px;padding-top: 10px;padding-right: 10px; padding-bottom: 10px;" data-id="{% url 'messageviewn' m.from_user %}" class="send btn btn-outline-primary waves-effect"><i class="fas fa-reply"></i>&nbsp;&nbsp;Reply</a>
+</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-1" style="padding-left: 20px"><img src="/media/{{ p }}" height="46"
+                                                                                   width="46"
+                                                                                   style="border-radius: 50%"></div>
+                                <div class="col-6" style="padding-top: 5px">
+                                    <div class="row">
+                                        <div class="col-12">{{ f }} {{ l }}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12"><font size="2" color="gray">{{ m.datetime }}</font></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+            </div>
+            <br>
+            <div class="row mx-lg-4 my-xs-3">
+                <div class="col-md-12" id="l"
+                     style="transition: .5s ease;position:relative;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)">
+                    <div class="row" style="padding-top:15px;padding-left:15px">{% if countn %}<i
+                            class="fas fa-comment"></i>&nbsp;&nbsp;Sent &nbsp; Messages ({{ countn }}){% endif %}{% if countn == 0 %}<i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;No Messages{% endif %}
+                    </div>
+                    <hr>
+                    {% for m, f, l, p in lists %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12"><p align="justify"><font size="4" face="Roboto">{{ m.message }}</font><br><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-1" style="padding-left: 20px"><img src="/media/{{ p }}" height="46"
+                                                                                   width="46"
+                                                                                   style="border-radius: 50%"></div>
+                                <div class="col-6" style="padding-top: 5px">
+                                    <div class="row">
+                                        <div class="col-12">{{ f }} {{ l }}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12"><font size="2" color="gray">{{ m.datetime }}</font></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+<br><br>
+<footer style="background-color: #1E3953;
+    text-align: justify;padding:20px">
+    
+    
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3 my-3">
+            <h3><font color="#FFFFFF">CDAC ALumni</font></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-9" style="font-size: 13px;">
+            <h5><font color="#666" face="Roboto">Established in year 2000, The institute is recognised countrywide as a
+                leader in the
+                field of engineering education and research. Reputed for the outstanding calibre of students graduating
+                from its undergraduate programmes ..
+                <br><br><a style="padding-left:50px" href="/about/"> Know More</a>
+            </font></h5></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <br><br>
+        </div>
+    </div>
+
+</footer>
+
+
+<script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $(".send").each(function () {
+            $(this).modalForm({formURL: $(this).data('id')});
+        });
+
+    });
+</script>
+<script>  $(function () {
+
+    $('#search').keyup(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "/searcht/",
+            data: {
+                'search_text': $('#search').val(),
+                'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+    });
+});
+
+function searchSuccess(data, textStatus, jqXHR) {
+    $('#search-results').html(data)
+}</script>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+{% load staticfiles %}
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <style>
+        #cl:hover {
+            background-color: azure
+        }
+        
+        #dw {
+            visibility: hidden
+        }
+        
+        #cl:hover #dw {
+            visibility: visible
+        }
+        
+        #s:hover {
+            background-color: azure
+        }
+        
+        .flip-card {
+            
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+        }
+        
+        .neapolitan {
+            margin-left: -15;
+            margin-right: -15;
+            margin-top: -20;
+            background: linear-gradient(to right, #7dc57c 0, #7dc57c 16.6%, #1295c9 16.6%, #1295c9 33.2%, #815874 33.2%, #815874 49.8%, #fada58 49.8%, #fada58 66.4%, #e15554 66.4%, #e15554 83%, #ff8000 83%, #ff8000 99.6%);
+            position: relative;
+            height: 8px;
+        }
+        
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+        
+        .flip-card-front {
+            
+            color: black;
+        }
+        
+        .flip-card-back {
+            background-color: #000099;
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .collapsible {
+            background-color: #0713A3;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+        
+        .active, .collapsible:hover {
+            background-color: #000066;
+        }
+        
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        
+        .but {
+            display: inline-block;
+            padding: 10px 14px;
+            color: #FFF;
+            border: 1px solid #FFF;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 120%;
+            background-color: rgba(255, 255, 255, 0);
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-transition: background-color 400ms ease;
+            -moz-transition: background-color 400ms ease;
+            transition: background-color 400ms ease;
+            cursor: pointer;
+        }
+        
+        .but:hover {
+            background-color: black;
+            color: white;
+        }
+        
+        
+        .nav-item:hover {
+            border-bottom: blue 3px solid;
+            
+        }
+        
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('/media/ll.gif') 50% 50% no-repeat rgb(249, 249, 249);
+            
+        }
+    </style>
+    
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut("slow");
+        });
+    </script>
+</head>
+
+<body style="background-color:#EDEFEF">
+<div class="loader"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        &nbsp;<nav class="navbar navbar-expand-lg navbar-light"
+                   style="position:fixed;z-index:1;background-color:white;width:100%;font-size:12pt;font-family:Roboto;font-weight:bold">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+            </ul>
+            <ul class="navbar-nav mx-auto">
+                
+                
+                <li class="nav-item">
+                    <a style="padding-left:20px" class="nav-link" href="/yeart"><br><i style="padding-left:30%"
+                                                                                       class="fas fa-users"></i><br>Students</a>
+                </li>
+                <li class="nav-item">
+                    <a style="padding-left:20px" class="nav-link" href="/tpo"><br><i style="padding-left:30%"
+                                                                                     class="fas fa-briefcase"></i><br>Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a style="padding-left:20px" class="nav-link" href="/postjobt"><br><i style="padding-left:30%"
+                                                                                          class="fas fa-briefcase"></i><br>Post
+                        Job</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a style="padding-left:20px" class="nav-link" href="/logout"><br><i style="padding-left:30%"
+                                                                                        class="fas fa-power-off"></i><br>Logout</a>
+                </li>
+            
+            
+            </ul>
+        </div>
+    </nav>
+    </div>
+</div>
+
+
+<script src="{% static 'js/main.js' %}"></script>
+
+<br>
+<br>
+
+
+<div class="row" style="margin-left: 20px;margin-right: 20px;margin-top:-20px">
+    {% for obj, c, k in obj_list %}
+    
+    <div class="col-md-3" style="margin-top:80px"><!-- Card -->
+        <div class="card" id="cl">
+            
+            <div class="row d-flex justify-content-center">
+                <img width="100" height="100" src="/media/{{ obj.Profile_photo }}" alt="Card image cap"
+                     style="border-radius:50%;margin-top:30px;align:center">
+            </div>
+            <!-- Card content -->
+            <div class="card-body">
+                
+                <!-- Title -->
+                <h4 class="card-title" align="center"><a href="/uprof1/{{ obj.id }}">{{ obj.First_name }} {{ obj.Last_name }}</a></h4>
+                <!-- Text -->
+                <div class="row">
+                    <div class="col-7">
+                        <p class="card-text"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{{ obj.Batch }}</p>
+                        <p class="card-text"><i class="fab fa-android"></i>&nbsp;&nbsp;{{ obj.Technology }}</p>
+                        <p class="card-text"><i class="fas fa-university"></i>&nbsp;&nbsp;{{ obj.College }}</p>
+                    </div>
+                    <div class="col-5"><p class="card-text">Applied&nbsp;:&nbsp;{{ c }}</p>
+                        <p class="card-text">Selected&nbsp;:&nbsp;{{ k }}</p></div>
+                </div>
+                <div class="row d-flex justify-content-center" id="dw"><a href="/tresume/{{ obj.id }} "><i
+                        class="fas fa-file-alt"></i>&nbsp;&nbsp;Resume</a></div>
+                
+                <div class="row d-flex justify-content-center" id="dw"><a href="/sdata/{{ obj.id }} "
+                                                                          class="btn btn-primary col-6"
+                                                                          style="padding-left:10px;padding-right: 10px">Downlaod
+                    Data</a></div>
+                
+                <!-- Button -->
+            
+            
+            </div>
+        
+        </div>
+        <!-- Card --></div>
+    
+    
+    <!--
+              <div class="col-sm-3 col-lg-3 d-flex justify-content-center my-2" style="vertical-align:middle">
+                  <div class="flip-card">
+      <div class="flip-card-inner" >
+        <div class="flip-card-front">
+          <img src="/media/{{ obj.Profile_photo }}" alt="Avatar" style="width:150px;height:150px;border-radius:50%">
+            <p align="center"><br> <h2><b>{{ obj.First_name }}</b></h2>
+    
+    </p>
+        </div>
+        <div class="flip-card-back">
+            <br>
+            <br>
+            <br>
+            <br>
+    
+          <h1 style="font-family:Roboto"><a href="/uprof1/{{ obj.id }}">{{ obj.First_name }}</a></h1>
+          <p>Batch : {{ obj.Batch }}</p>
+          <p style="font-family:Roboto">Technology : {{ obj.Technology }}</p>
+        </div>
+      </div>
+    </div>-->
+    
+    
+    {% endfor %}
+
+</div>
+<br><br>
+
+{% if z == 0 %}
+<p align="center" style="margin-bottom: 100px;margin-top:-50px"><img src="/media/no_result_491590.png" width="300"
+                                                                     height="300"><br><br>
+    <br><font size="5">No Alumni of {{ b }} batch</font><br>
+</p>
+{% endif %}
+
+
+<br>
+<footer style="background-color: #1E3953;
+    text-align: justify;padding:20px">
+    
+    
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3 my-3">
+            <h3><font color="#FFFFFF">CDAC ALumni</font></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-9" style="font-size: 13px;">
+            <h5><font color="#666" face="Roboto">Established in year 2000, The institute is recognised countrywide as a
+                leader in the
+                field of engineering education and research. Reputed for the outstanding calibre of students graduating
+                from its undergraduate programmes ..
+                <br><br><a style="padding-left:50px" href="/about/"> Know More</a>
+            </font></h5></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <br><br>
+        </div>
+    </div>
+
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+<!-- Compiled and minified CSS -->
+
+
+</body>
+</html>

@@ -1,0 +1,933 @@
+{% load staticfiles %}
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+<!-- Font Awesome --><link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+#cl:hover{background-color:azure}
+#dw{visibility:hidden}
+#cl:hover #dw{visibility:visible}
+#s:hover{background-color:azure}
+.flip-card {
+
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.neapolitan {
+    margin-left:-15;
+    margin-right:-15;
+    margin-top:-20;
+    background:linear-gradient(to right,#7dc57c 0,#7dc57c 16.6%,#1295c9 16.6%,#1295c9 33.2%,#815874 33.2%,#815874 49.8%,#fada58 49.8%,#fada58 66.4%,#e15554 66.4%,#e15554 83%,#ff8000 83%,#ff8000 99.6%);
+    position:relative;
+    height:8px;
+}
+
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #000099;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.collapsible {
+  background-color: #0713A3;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #000066;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: white;
+}
+
+
+.but {
+ 	display: inline-block;
+	padding: 10px 14px;
+	color: #FFF;
+	border: 1px solid #FFF;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 120%;
+	background-color: rgba(255,255,255, 0);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-transition: background-color 400ms ease;
+	-moz-transition: background-color 400ms ease;
+	transition: background-color 400ms ease;
+	cursor: pointer;}
+
+.but:hover {
+  background-color: black;
+  color: white;
+}
+
+
+.nav-item:hover{
+  border-bottom: blue 3px solid;
+
+}
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/media/ll.gif') 50% 50% no-repeat rgb(249,249,249);
+
+}
+    </style>
+
+    <script type="text/javascript">
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>
+</head>
+
+<body style="background-color:#EDEFEF">
+<div class="loader"></div>
+<div class="container-fluid">
+    <div class="row">
+&nbsp;<nav class="navbar navbar-expand-lg navbar-light" style="z-index:10;position:fixed;background-color:white;width:100%;font-size:12pt;font-family:Railway Regular;font-weight:bold">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+         <ul class="navbar-nav mr-auto">
+        <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+      </ul>
+       <form class="form-inline col-3"  style="
+    margin-top: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-top-width: 20px;
+    margin-bottom: 0px;
+" role="search" method="post" action="/search/">{% csrf_token %}
+      <input class="form-control" id="search" type="search" placeholder="search for people or job" name="q"  value="{{ request.GET.q }}">
+                              <ul id="search-results" style="position: absolute;top:60px;left:-35px;z-index: 1"></ul>
+
+      <button class="btn btn-primary col-1" style="height:38px;padding-top:10px;padding-left:18px;width:5px;margin-left:0px" type="submit"><i class="fas fa-search"></i></button>
+    </form>
+   <ul class="navbar-nav ml-auto">
+     <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/" ><br><i id="icon" class="fas fa-home"></i><br>Home</a>
+      </li>
+     <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/validj" ><br><i id="icon" class="fas fa-briefcase"></i><br>Jobs</a>
+      </li>
+        <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/network"><br><i id="icon" class="fas fa-users"></i><br>Network</a>
+      </li>
+       <li class="nav-item" style="">
+        <a style="padding-left:20px" class="nav-link" href="/validp" ><br><i id="icon" class="fas fa-user"></i><br>My Profile</a>
+      </li>
+
+          <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/batch"><br><i id="icon" class="fas fa-user-friends"></i><br>Batchmates</a>
+      </li>
+           <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/year"><br><i id="icon" class="fas fa-book-open"></i><br>Yearbook</a>
+      </li>
+
+
+
+
+         <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/message"><br><i id="icon" class="fas fa-comment"></i><br>Message</a>
+      </li>
+       <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/logout"><br><i id="icon" class="fas fa-power-off"></i><br>Logout</a>
+      </li>
+
+
+    </ul>
+  </div>
+    </nav></div></div>
+
+
+	<script src="{% static 'js/main.js' %}"></script>
+
+
+<div class="container" style="margin-top:150px;background-color:white">
+
+    <div class="neapolitan"></div>
+    <div class="row" style="padding:50px;padding-bottom:20px;">
+        <div class="col-sm-9">
+           <font size="6pt"> <b>{{ obj.First_name }} {{ obj.Last_name }}</b></font><br><br>
+            {{ obj.Email }}<br>
+            +91{{ obj.Mobile_no }}<br>
+            {{ obj.City }}
+        </div></div>
+
+
+    <hr>
+    <div class="row" style="padding:30px;">
+        <div class="col-sm-3">
+            <h3><font color="#1295c9" size="5pt"><b style="font-weight: 900">GRADUATION</b></font></div>
+        <div class="col-sm-9">
+            <div class="row"><div class="col-md-12">
+                <font color="black" size="4pt"><b>{{ obj.Degree }},{{ obj.Department }}</b></font><br>
+                <font color="gray" size="3pt"> {{ obj.College }}</font></div>
+
+        </div>
+    </div>
+        </div>
+    <hr>
+    <div class="row" style="padding:30px">
+        <div class="col-sm-3">
+            <font color="#1295c9" size="5pt"><b style="font-weight: 900">JOBS</b></font>
+        </div>
+        <div class="col-sm-9">
+            {% for j in job %}
+            <div class="row"><div class="col-10">
+                <font color="black" size="4pt"><b>{{ j.profile }}</b><br></font>
+                <font color="gray" size="3pt"><b>{{ j.organisation }}<br> {{ j.startd }}-{{ j.endd }}</b><br>
+</font><font size="2pt"> {{ j.description }}</font>
+            </div><div class="col-2"><a href="/deljob/{{ j.id }}"><i class="fas fa-trash"></i></a>&nbsp;&nbsp;&nbsp; <a data-id="{% url 'jobeditv' j.id %}" class="tedij"><i class="fas fa-pen"></i></a></div> </div><br>{% endfor %}
+
+            <a data-toggle="modal" data-target="#modaljobForm"><font color="blue" size="3pt"><b>+ Add Job</b></font></a>
+        </div>
+    </div>
+    <hr>
+    <div class="row" style="padding:30px">
+        <div class="col-sm-3">
+            <font color="#1295c9" size="5pt"><b style="font-weight: 900">INTERNSHIP</b></font>
+        </div>
+        <div class="col-sm-9">{% for i in intern %}
+            <div class="row">
+                <div class="col-10">
+                    <font color="black" size="4pt"><b>{{ i.profile }}<br></b></font>
+
+                    <font color="gray" size="3pt"><b>{{ i.organisation }} <br>{{ i.startd }}-{{ i.endd }}</b><br></font>
+                    <font size="2pt">{{ i.description }}</font>
+                </div><div class="col-2"><a href="/delint/{{ i.id }}"><i class="fas fa-trash"></i></a>&nbsp;&nbsp;&nbsp; <a data-id="{% url 'interneditv' i.id %}" class="tediti"><i class="fas fa-pen"></i></a></div>
+            </div><br>{% endfor %}
+            <a data-toggle="modal" data-target="#modalinternForm"><font color="blue" size="3pt"><b>+ Add Internship</b></font></a>
+        </div>
+    </div>
+
+     <hr>
+    <div class="row" style="padding:30px">
+        <div class="col-sm-3">
+            <font color="#1295c9" size="5pt"><b style="font-weight: 900">TRAINING</b></font>
+        </div>
+        <div class="col-sm-9">{% for t in train %}
+            <div class="row">
+                <div class="col-10">
+                    <font color="black" size="4pt"><b>{{ t.program }}</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                    <font color="gray" size="3pt"><b>{{ t.organisation }} {{ t.location }} <br>{{ t.startd }}-{{ t.endd }}</b></font><br>
+                    <font size="2pt">{{ t.description }}</font>
+                </div><div class="col-2"><a href="/deltrain/{{ t.id }}"><i class="fas fa-trash"></i></a>&nbsp;&nbsp;&nbsp; <a data-id="{% url 'traineditv' t.id %}" class="tedit"><i class="fas fa-pen"></i></a></div>
+            </div><br>{% endfor %}
+            <a data-toggle="modal" data-target="#modaltrainForm"><font color="blue" size="3pt"><b>+ Add Training</b></font></a>
+        </div>
+    </div>
+
+      <hr>
+    <div class="row" style="padding:30px">
+        <div class="col-sm-3">
+            <font color="#1295c9" size="5pt"><b style="font-weight: 900">PROJECTS</b></font>
+        </div>
+        <div class="col-sm-9">{% for p in pro %}
+            <div class="row">
+                <div class="col-12">
+                    <font color="black" size="4pt"><b>{{ p.title }}</b></font><br>
+                    <font color="gray" size="3pt"><b>{{ p.startd }}-{{ p.endd }}</b></font><br>
+                    <font size="2pt">{{ p.description }}</font>
+                </div><div class="col-2"><a href="/delpro/{{ p.id }}"><i class="fas fa-trash"></i></a>&nbsp;&nbsp;&nbsp; <a data-id="{% url 'proeditv' p.id %}" class="tedip"><i class="fas fa-pen"></i></a></div>
+            </div><br>{% endfor %}
+            <a data-toggle="modal" data-target="#modalprojectForm"><font color="blue" size="3pt"><b>+ Add Projects</b></font></a>
+        </div>
+    </div>
+
+      <hr>
+    <div class="row" style="padding:30px">
+        <div class="col-sm-3">
+            <font color="#1295c9" size="5pt"><b style="font-weight: 900">SKILLS</b></font>
+        </div>
+        <div class="col-sm-9">{% for s in skill %}
+            <div class="row">
+                <div class="col-10">
+                    <font color="black" size="4pt"><b>{{ s.skill }}</b></font><br>
+                    <font color="gray" size="3pt"><b>{{ s.level }}</b></font><br>
+                                   </div><div class="col-2"><a href="/delskill/{{ s.id }}"><i class="fas fa-trash"></i></a>&nbsp;&nbsp;&nbsp; <a data-id="{% url 'skilleditv' s.id %}" class="edit"><i class="fas fa-pen"></i></a></div>
+            </div><br>{% endfor %}
+            <a data-toggle="modal" data-target="#modalskillForm"><font color="blue" size="3pt"><b>+ Add Skill</b></font></a>
+        </div>
+    </div>
+    </div>
+
+<!-- forms -->
+{% include 'modal.html' %}
+<div class="modal fade" id="modalprojectForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-warning" role="document">
+    <div class="modal-content">
+      <form action="/rpro/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Project Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ formp.title }}
+          <label data-error="wrong" data-success="" for="title">Project Title</label>
+        </div>
+
+         <div class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <label>Start date</label>
+        <div class="ui calendar" id="rangestart">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            {{ formp.startd }}
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>End date</label>
+        <div class="ui calendar" id="rangeend">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            {{ formp.endd }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <div class="md-form">
+          {{ formp.description }}
+          <label data-error="wrong" data-success="" for="description">Description</label>
+        </div>
+        <div class="md-form mb-5">
+          {{ formp.link }}
+          <label data-error="wrong" data-success="" for="link">Link</label>
+        </div>
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-primary" type="submit" value="Save">
+      </div>
+            </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modaljobForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-warning" role="document">
+    <div class="modal-content">
+      <form action="/rjob/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Job Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ formj.profile }}
+          <label data-error="wrong" data-success=" " for="profile">Profile</label>
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formj.organisation }}
+          <label data-error="wrong" data-success=" " for="organisation">Organisation</label>
+        </div>
+
+        <div class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <label>Start date</label>
+        <div class="ui calendar" id="rangestartj">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            {{ formj.startd }}
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>End date</label>
+        <div class="ui calendar" id="rangeendj">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            {{ formj.endd }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <div class="md-form">
+          {{ formj.description }}
+          <label data-error="wrong" data-success=" " for="descriptionj">Description</label>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-primary" type="submit" value="Save">
+      </div>
+            </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalskillForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-warning" role="document">
+    <div class="modal-content">
+      <form action="/rskill/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Skill</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ forms.skill }}
+          <label data-error="wrong" data-success=" " for="skill">Skill</label>
+        </div>
+          <div class="md-form mb-3">
+          {{ forms.level }}
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-primary" type="submit" value="Save">
+      </div>
+            </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalinternForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-warning" role="document">
+    <div class="modal-content">
+      <form action="/rint/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Insternship Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ formi.profile }}
+          <label data-error="wrong" data-success=" " for="profilei">Profile</label>
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formi.organisation }}
+          <label data-error="wrong" data-success=" " for="organisationi">Organisation</label>
+        </div>
+
+        <div class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <label>Start date</label>
+        <div class="ui calendar" id="rangestarti">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            {{ formi.startd }}
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>End date</label>
+        <div class="ui calendar" id="rangeendi">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            {{ formi.endd }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <div class="md-form">
+          {{ formi.description }}
+          <label data-error="wrong" data-success=" " for="descriptioni">Description</label>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-primary" type="submit" value="Save">
+      </div>
+            </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modaltrainForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-warning" role="document">
+    <div class="modal-content">
+      <form action="/rtra/" method="POST" role="form">{% csrf_token %}
+        <div class="modal-header text-center" style="background-color: royalblue">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: white">Training Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3" style="padding-top: 0px;padding-bottom: 0px">
+        <div class="md-form mb-3">
+          {{ formt.program }}
+          <label data-error="wrong" data-success=" " for="programt">Program</label>
+        </div>
+
+        <div class="md-form mb-5">
+          {{ formt.organisation }}
+          <label data-error="wrong" data-success=" " for="organisationt">Organisation</label>
+        </div>
+
+         <div class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <label>Start date</label>
+        <div class="ui calendar" id="rangestartt">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            {{ formt.startd }}
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>End date</label>
+        <div class="ui calendar" id="rangeendt">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            {{ formt.endd }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <div class="md-form">
+          {{ formt.description }}
+          <label data-error="wrong" data-success=" " for="descriptiont">Description</label>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-primary" type="submit" value="Save">
+      </div>
+            </form>
+    </div>
+  </div>
+</div>
+
+<!-- end of form -->
+
+<br>
+<footer style="background-color: #1E3953;
+    text-align: justify;padding:20px">
+
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-3">
+                <h3><font color="#FFFFFF">CDAC ALumni</font></h3>
+            </div></div>
+         <div class="row">
+             <div class="col-sm-1"></div>
+            <div class="col-sm-9" style="font-size: 13px;">
+<h5><font color="#666" face="Roboto" >Established in year 2000, The institute is recognised countrywide as a leader in the
+                field of engineering education and research. Reputed for the outstanding calibre of students graduating from its undergraduate programmes ..
+    <br><br><a style="padding-left:50px" href="/about/"> Know More</a>
+</font></h5> </div>
+        </div>
+    <div class="row">
+    <div class="col-sm-12">
+        <br><br>
+    </div>
+</div>
+
+</footer>
+
+
+
+<script type="text/javascript"> $(function () {
+		 $(".edit").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      });
+ $(function () {
+		 $(".tedit").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      });
+
+ $(function () {
+		 $(".tedip").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      });
+
+  $(function () {
+		 $(".tediti").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      });
+
+   $(function () {
+		 $(".tedij").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      });
+
+</script>
+ <!-- Compiled and minified CSS -->
+<script>  $(function() {
+
+    $('#search').keyup(function() {
+
+        $.ajax({
+            type: "GET",
+            url: "/searcht/",
+            data: {
+                'search_text' : $('#search').val(),
+                'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+    });
+});
+
+function searchSuccess(data, textStatus, jqXHR)
+{
+    $('#search-results').html(data)
+}</script>
+
+
+<script type="text/javascript">
+
+            $(function () {var today = new Date();
+                $('#rangestart').calendar({
+  type: 'date',
+  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+        formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return year + '-' + month + '-' + day;
+    }
+  },
+
+  endCalendar: $('#rangeend')
+});
+$('#rangeend').calendar({
+  type: 'date',
+
+    formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return year + '-' + month + '-' + day;
+    }
+  },
+  startCalendar: $('#rangestart')
+});
+
+                $('#rangestarti').calendar({
+  type: 'date',
+  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+        formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return year + '-' + month + '-' + day;
+    }
+  },
+
+  endCalendar: $('#rangeendi')
+});
+$('#rangeendi').calendar({
+  type: 'date',
+
+    formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return year + '-' + month + '-' + day;
+    }
+  },
+  startCalendar: $('#rangestarti')
+});
+
+                $('#rangestartt').calendar({
+  type: 'date',
+  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+        formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return year + '-' + month + '-' + day;
+    }
+  },
+
+  endCalendar: $('#rangeendt')
+});
+$('#rangeendt').calendar({
+  type: 'date',
+
+    formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return year + '-' + month + '-' + day;
+    }
+  },
+  startCalendar: $('#rangestartt')
+});
+
+                $('#rangestartj').calendar({
+  type: 'date',
+  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+        formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return year + '-' + month + '-' + day;
+    }
+  },
+
+  endCalendar: $('#rangeendj')
+});
+$('#rangeendj').calendar({
+  type: 'date',
+
+    formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return year + '-' + month + '-' + day;
+    }
+  },
+  startCalendar: $('#rangestartj')
+});
+
+            });
+        </script>
+
+<script>
+   $("#skill").change(function () {
+      var skills = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validate_skill/',
+        data: {
+          'skill': skills
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("This skill is already in your Resume");
+          }
+        }
+      });
+
+    });
+
+</script>
+<script>
+     $("#endd").blur(function () {
+      var endd = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validate_date/',
+        data: {
+            'startd':$('#startd').val(),
+          'endd': endd
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("Your start date and end date coincides with already stored project.please enter valid date");
+          }
+        }
+      });
+
+    });
+
+          $("#enddj").blur(function () {
+      var endd = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validate_datej/',
+        data: {
+            'startd':$('#startd').val(),
+          'endd': endd
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("Your start date and end date coincides with already stored job.please enter valid date");
+          }
+        }
+      });
+
+    });
+
+           $("#enddi").blur(function () {
+      var endd = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validate_datei/',
+        data: {
+            'startd':$('#startdi').val(),
+          'endd': endd
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("Your start date and end date coincides with already stored internships.please enter valid date");
+          }
+        }
+      });
+
+    });
+
+        $("#enddt").blur(function () {
+      var endd = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validate_datet/',
+        data: {
+            'startd':$('#startdt').val(),
+          'endd': endd
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("Your start date and end date coincides with already stored trainings.please enter valid date");
+          }
+        }
+      });
+
+    });
+</script>
+	<script src="{% static 'js/main.js' %}"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+
+
+</body>
+</html>
+
+
+

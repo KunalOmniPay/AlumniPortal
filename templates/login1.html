@@ -1,0 +1,228 @@
+{% load staticfiles %}
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="{% static 'form.css' %}" type="text/css" media="all">
+<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="all">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <style>
+
+
+.nav-item:hover{
+  border-bottom: blue 3px solid;
+
+}
+ .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/media/ll.gif') 50% 50% no-repeat rgb(249,249,249);
+
+}
+    </style>
+
+    <script type="text/javascript">
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>
+
+
+
+
+<title>C-DAC Alumni</title>
+</head>
+
+<body style="background-color:#EDEFEF">
+<div class="loader"></div>
+
+<div class="header">
+
+
+<div class="container-fluid">
+    <div class="row">
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light" style="position:fixed;background-color:white;width:100%;font-size:15pt;font-family:Roboto;font-weight:bold">
+  <br>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mr-auto">
+        <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+      </ul>
+    <ul class="navbar-nav ml-auto">
+
+
+
+      <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/" ><br><i style="padding-left:30%" class="fas fa-home"></i><br>Home</a>
+      </li>
+
+
+         <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/contact"><br><i style="padding-left:30%" class="far fa-address-card"></i><br>Contact Us</a>
+      </li>
+         <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/about"><br><i style="padding-left:30%" class="fas fa-edit"></i><br>About Us</a>
+      </li>
+        {% if r == 1%}
+
+         <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/logout"><br><i style="padding-left:30%" class="fas fa-power-off"></i><br>Logout</a>
+      </li>
+    {% endif %}
+
+
+    </ul>
+  </div>
+</nav></div>
+</div>
+
+<div class="content">
+<div class="container-fluid" style="position:absolute;height:28%; z-index: 1;background-color:#000066" >
+
+&nbsp;</div>
+<div style="text-align:center;margin-top:50px" id="layer20">
+<div  style="position:absolute;z-index:2;right:20%;width:60%;" id="layer1">
+
+<div class="row"><div class="col-sm-12" style="margin-top:100px">
+    <div class="card">
+
+  <h5 class="card-header info-color white-text text-center py-4">
+    <strong>Log In / Sign Up</strong>
+  </h5>
+
+  <!--Card content-->
+  <div class="card-body px-sm-12 pt-0">
+      <div class="row">
+
+  <div class="col-sm-6" style="background-color:white">
+         <br><font color="red"><i class="fas fa-exclamation-triangle"></i>Wrong Credentials</font> <br><br><br>
+      <img src="/media/Cdac_logo.png" width="50%" height="80">
+      <br>
+      <p style="font-family:Roboto;font-size:12pt"><br>SignUp or Login to stay connected to your<br>&nbsp fellow alumni</p>
+
+</div>
+          <div class="col-sm-6">
+    <!-- Form -->
+    <form class="text-center" method="post" action="" style="color: #757575;">{% csrf_token %}
+
+      <!-- Email -->
+      <div class="md-form">
+        <input type="text" id="materialLoginFormEmail" class="form-control" name="username">
+        <label for="materialLoginFormEmail">Username</label>
+      </div>
+
+      <!-- Password -->
+      <div class="md-form">
+        <input type="password" id="materialLoginFormPassword" class="form-control" name="Password">
+        <label for="materialLoginFormPassword">Password</label>
+      </div>
+
+      <div class="d-flex justify-content-around">
+        <div>
+          <!-- Remember me --><br>
+        <div class="checkbox checkbox-info checkbox-circle mx-4">
+                        <input type="checkbox" class="custom-control-input" id="customControlInline" onclick="reveal()">
+    <label class="custom-control-label" for="customControlInline">Show</label>
+                    </div>
+        </div>
+       	<p>
+
+          <br><div class="ml-auto"><br>
+            <a href="/password_reset">
+			<font face="Roboto" size="4" color="#0069D9" style="margin-right:0px">Forgot
+			Password?</font></a></div><br>
+
+<br>
+          <br><br>
+<hr>
+      				</p>
+      </div>
+
+      <!-- Sign in button -->
+      <button name="login" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+<hr>
+      <!-- Register -->
+      <p><font size="4">Not a member?
+        </font><font size="5"><font face="Roboto">
+        <a href="/register" style="color:#0069D9; font-weight:700">Register</a></font>
+		</font>
+      </p>
+      <!-- Social login -->
+
+
+    </form></div>
+    <!-- Form -->
+  </div>
+  </div>
+
+</div>
+</div></div></div></div></div>
+
+
+
+<!-- JS -->
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript">
+function reveal()
+{
+if(document.getElementById('customControlInline').checked)
+   {document.getElementById("materialLoginFormPassword").type='text';}
+else
+document.getElementById("materialLoginFormPassword").type='password';
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

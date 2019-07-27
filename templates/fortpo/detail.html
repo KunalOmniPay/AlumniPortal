@@ -1,0 +1,154 @@
+<html>
+
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+     <style>
+        .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/media/ll.gif') 50% 50% no-repeat rgb(249,249,249);
+
+}
+
+.nav-item:hover{
+  border-bottom: blue 3px solid;
+
+}
+    </style>
+    <script type="text/javascript">
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>
+<!-- Compiled and minified CSS -->
+
+</head>
+<body style="background-color:#EDEFEF">
+<div class="loader"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+&nbsp;<nav class="navbar navbar-expand-lg navbar-light" style="position:relative;top:-23px;background-color:white;width:100%;font-size:12pt;font-family:Roboto;font-weight:bold">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+         <ul class="navbar-nav mr-auto">
+        <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+      </ul>
+    <ul class="navbar-nav mx-auto">
+
+
+
+ <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/yeart"><br><i style="padding-left:30%" class="fas fa-users"></i><br>Students</a>
+      </li>
+        <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/tpo"><br><i style="padding-left:30%" class="fas fa-briefcase"></i><br>Jobs</a>
+      </li>
+ <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/postjobt"><br><i style="padding-left:30%" class="fas fa-briefcase"></i><br>Post Job</a>
+      </li>
+ <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/logout"><br><i style="padding-left:30%" class="fas fa-power-off"></i><br>Logout</a>
+      </li>
+
+
+    </ul>
+  </div>
+    </nav></div></div>
+
+ <div class="container-fluid" style="background-color: rgba(255, 255, 255, 0.1); ">
+<hr style="width:100%;background-color:#003399;height:2px;margin-top:-20"></div>
+
+
+
+
+<br><br>
+<div class="container " style="width:80% ;background-color:white">
+	<div class="row mx-2">
+		<b><font size="6" face="Roboto">&nbsp;Job Details</font></b>
+
+
+
+
+
+	</div>
+	<hr>
+	<div class="row mx-3">
+		<font size="5" color="#000066"><span class="fas fa-file-alt"></span>&nbsp;Basic</font></div><br>
+	<div class="row mx-1">
+
+		<div class="col-sm-8"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Company Name<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Company_name }}
+</div><br>
+		<div class="col-sm-4"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Designation<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Job_title }}
+		</div></div><br>
+	<div class="row mx-1">
+
+		<div class="col-sm-8"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Salary<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Salary }}
+</div>
+		<div class="col-sm-4"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Location<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Location }}
+		</div></div><br>
+	<div class="row mx-1">
+
+		<div class="col-sm-8"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Posted On<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Currentdate }}
+</div>
+		<div class="col-sm-4"><font size="2"><span class="far fa-circle"></span>&nbsp;&nbsp;</font>Application Deadline<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ instance.Deadline }}
+		</div></div>
+	<hr>
+	<div class="row"><div class="col-sm-5"><font size="5" color="#000066">&nbsp;&nbsp;<span class="fas fa-file-alt"></span>&nbsp;Description</font></div></div><br>
+	<div class="row mx-5" style="word-wrap:break-word"><p align="justify"><font face="Roboto" color="#666666" style="font-size:13pt">{{ instance.About_role }}</font></p></div><br>
+	<div class="row mx-4"><b><font face="Roboto" size="4">About {{ instance.Company_name }} ({{ instance.link }})</font></b></div><br>
+	<div class="row mx-5"><p align="justify"><font face="Roboto" color="#666666" style="font-size:13pt">{{ instance.About_company }}</font></p></div>
+<hr>
+	<div class="row">
+		<div class="col-4"></div>
+		<div class="col-4" style="padding-bottom:20px">
+	<a href="/get/{{ instance.id }}" class="btn btn-primary btn-primary" style="font-weight:700;background-color:#009933">
+<font color="#000000" face="Roboto"></font>
+		<font color=white face="Roboto"><span class="fas fa-file-download">&nbsp;&nbsp; </span>Download Applicants Data</font></a></div>
+		<div class="col-4"></div>
+	</div>
+
+
+
+</div></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

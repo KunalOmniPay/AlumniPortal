@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container-fluid" style="background-color: rgba(255, 255, 255, 0.1); ">
+    <hr style="background-color:#003399;height:2px">
+</div>
+
+<hr style="background-color:#003399;height:2px;width:100%">
+<div class="row">
+    <div class="col-1"></div>
+    <font size="7" color="#666666" align="center">{{ instance.First_name }} {{ instance.Last_name }}</font></div>
+
+<hr style="width:90%">
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3">
+            <img src="/media/{{ instance.Profile_photo }}" height="288" width="234">
+        </div>
+        
+        <div class="col-sm-2"></div>
+        
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3">
+            <i class="fas fa-user-alt">&nbsp;&nbsp; </i>Name :<br><font color="#808080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{ instance.First_name }} {{ instance.Last_name }}</font>
+            
+            
+            <hr style="width:90%">
+            
+            
+            <br>
+            
+            <i class="fas fa-envelope"></i>&nbsp;&nbsp; Email Address :<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <font color="#808080">{{ instance.Email }}</font>
+            
+            
+            <hr style="width:90%">
+            <br>
+            <i class="fas fa-mobile-alt"></i>&nbsp;&nbsp; Mobile No :<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+                color="#808080"> {{ instance.Mobile_no }}
+        </font>
+            
+            
+            <hr style="width:90%">
+            
+            
+            <br>
+            
+            <i class="fas fa-calendar-alt"></i>&nbsp;&nbsp; Batch :<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+                color="#808080">
+            {{ instance.Batch }}</font>
+            
+            
+            <hr style="width:90%">
+            
+            
+            <br>
+            <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp; Address :<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <font color="#808080">{{ instance.Address }}</font>
+        
+        
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}>

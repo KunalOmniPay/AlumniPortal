@@ -1,0 +1,206 @@
+{% load staticfiles %}
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!-- Font Awesome --><link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery --> <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<style>
+.nav-item:hover{
+  border-bottom: blue 3px solid;
+
+}
+.btn{color:white;
+
+  border: 2px solid black;
+  }
+
+    .btn:hover{color:white;
+    background-color:#202020}
+ .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/media/ll.gif') 50% 50% no-repeat rgb(249,249,249);
+
+}
+    </style>
+
+    <script type="text/javascript">
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>
+
+</head>
+<body style="background-image: url(/media/f.jpg); background-repeat: no-repeat; background-attachment: fixed; ">
+<div class="loader"></div>
+
+<div class="container-fluid">
+    <div class="row">
+&nbsp;<nav class="navbar navbar-expand-lg navbar-light" style="position:relative;top:-23px;background-color:white;width:100%;font-size:12pt;font-family:Roboto;font-weight:bold">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+         <ul class="navbar-nav mr-auto">
+        <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+      </ul>
+    <ul class="navbar-nav mx-auto">
+
+
+
+ <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/yeart"><br><i style="padding-left:30%" class="fas fa-users"></i><br>Students</a>
+      </li>
+        <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/tpo"><br><i style="padding-left:30%" class="fas fa-briefcase"></i><br>Jobs</a>
+      </li>
+ <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/postjobt"><br><i style="padding-left:30%" class="fas fa-briefcase"></i><br>Post Job</a>
+      </li>
+ <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/logout"><br><i style="padding-left:30%" class="fas fa-power-off"></i><br>Logout</a>
+      </li>
+
+
+    </ul>
+  </div>
+    </nav></div></div>
+
+
+    
+    <div class="row" style="padding-left:100px;padding-top:20px">
+        <div class="col-md-12">
+            <p style="color:white; font-size:18pt">CDAC Members Directory</p></div></div>
+
+
+    <div class="row d-flex justify-content-center" style="padding:50px">
+        <div class="col-md-10 d-flex justify-content-center" style="background-color:black;opacity:0.5">
+       <font face="Roboto"> <p  align="center" style="color:white;font-size:14pt;padding-left: 40px;padding-right: 30px;padding-top: 30px;padding-bottom: 30px;">Make sure all of your friends are part of official CDAC directory.
+            <br>
+Invite them by sharing directory in your whatsapp batch groups & facebook wall
+
+
+ </p>
+       </font>
+</div>
+    </div>
+
+
+<div class="container">
+    <div class="row" style="padding:20px;">
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-6" style="margin-bottom:20px">
+            <a href="/b2019t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2019<br>{{ a }} Members</button></a>
+        </div>
+            <div class="col-6" style="margin-bottom:20px"> <a href="/b2018t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2018<br>{{ b }} Members</button></a></div>
+                </div>
+        </div>
+         <div class="col-md-6 ">
+            <div class="row">
+                <div class="col-6">
+            <a href="/b2017t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2017<br>{{ c }} Members</button></a>
+        </div>
+            <div class="col-6"> <a href="/b2016t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2016<br>{{ d }} Members</button></a></div>
+                </div>
+        </div>
+
+    </div>
+    <div class="row" style="padding:20px;">
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-6" style="margin-bottom:20px">
+            <a href="/b2015t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2015<br>{{ e }} Members</button></a>
+        </div>
+            <div class="col-6" style="margin-bottom:20px"> <a href="/b2014t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2014<br>{{ f }} Members</button></a></div>
+                </div>
+        </div>
+         <div class="col-md-6 ">
+            <div class="row">
+                <div class="col-6">
+            <a href="/b2013t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2013<br>{{ g }} Members</button></a>
+        </div>
+            <div class="col-6"> <a href="/b2012t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2012<br>{{ h }} Members</button></a></div>
+                </div>
+        </div>
+
+    </div>
+    <div class="row" style="padding:20px;">
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-6" style="margin-bottom:20px">
+            <a href="/b2011t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2011<br>{{ i }} Members</button></a>
+        </div>
+            <div class="col-6" style="margin-bottom:20px"> <a href="/b2010t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2010<br>{{ j }} Members</button></a></div>
+                </div>
+        </div>
+         <div class="col-md-6 ">
+            <div class="row">
+                <div class="col-6">
+            <a href="/b2009t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2009<br>{{ k }} Members</button></a>
+        </div>
+            <div class="col-6"> <a href="/b2008t"> <button class="btn" style="width:100%; height:100%;border-color:white">Class of 2008<br>{{ l }} Members</button></a></div>
+                </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+<div class="footer">
+    <footer style="background-color: #1E3953;
+    text-align: justify;padding:20px">
+
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-3">
+                <h3><font color="#FFFFFF">CDAC ALumni</font></h3>
+            </div></div>
+         <div class="row">
+             <div class="col-sm-1"></div>
+            <div class="col-sm-9" style="font-size: 13px;">
+<h5><font color="#666" face="Roboto" >Established in year 2000, The institute is recognised countrywide as a leader in the
+                field of engineering education and research. Reputed for the outstanding calibre of students graduating from its undergraduate programmes ..
+<br><br><a style="padding-left:50px" href="/about/"> Know More</a>
+</font></h5> </div>
+        </div>
+    <div class="row">
+    <div class="col-sm-12">
+        <br><br>
+    </div>
+</div>
+
+</footer>
+
+</div>
+<script src="{% static 'js/main.js' %}"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+  <!-- Compiled and minified CSS -->
+
+</body>
+</html>

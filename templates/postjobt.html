@@ -1,0 +1,455 @@
+{% load staticfiles %}
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="stylesheet" href="{% static 'form.css' %}" type="text/css" media="all">
+<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="{% static 'jobform/css/montserrat-font.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'jobform/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+<link rel="stylesheet" href="{% static 'jobform/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'strip.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+
+<!-- Bootstrap tooltips -->
+        <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+  <!-- Compiled and minified CSS -->
+ <!-- Compiled and minified CSS -->
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+#cl:hover{background-color:azure}
+#dw{visibility:hidden}
+#cl:hover #dw{visibility:visible}
+#s:hover{background-color:azure}
+.flip-card {
+
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.neapolitan {
+    margin-left:-15;
+    margin-right:-15;
+    margin-top:-20;
+    background:red;
+    position:relative;
+    height:8px;
+}
+.neapolitan:before {
+    content:'';
+    background:lightseagreen;
+    width:30%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+}
+.neapolitan:after {
+    content:'';
+    background:#007bff;
+    width:40%;
+    height:100%;
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #000099;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.collapsible {
+  background-color: #0713A3;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #000066;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: white;
+}
+
+
+.but {
+ 	display: inline-block;
+	padding: 10px 14px;
+	color: #FFF;
+	border: 1px solid #FFF;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 120%;
+	background-color: rgba(255,255,255, 0);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-transition: background-color 400ms ease;
+	-moz-transition: background-color 400ms ease;
+	transition: background-color 400ms ease;
+	cursor: pointer;}
+
+.but:hover {
+  background-color: black;
+  color: white;
+}
+
+
+.nav-item:hover{
+  border-bottom: blue 3px solid;
+
+}
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/media/ll.gif') 50% 50% no-repeat rgb(249,249,249);
+
+}
+    </style>
+
+    <script type="text/javascript">
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>
+</head>
+
+<body style="background-color:#EDEFEF">
+<div class="loader"></div>
+<div class="container-fluid">
+    <div class="row">
+&nbsp;<nav class="navbar navbar-expand-lg navbar-light" style="position:relative;top:-23px;background-color:white;width:100%;font-size:12pt;font-family:Roboto;font-weight:bold">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+         <ul class="navbar-nav mr-auto">
+        <img border="0" src="/media/Cdac_logo.png" width="180" height="80">
+      </ul>
+    <ul class="navbar-nav mx-auto">
+
+
+
+ <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/yeart"><br><i style="padding-left:30%" class="fas fa-users"></i><br>Students</a>
+      </li>
+        <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/tpo"><br><i style="padding-left:30%" class="fas fa-briefcase"></i><br>Jobs</a>
+      </li>
+ <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/postjobt"><br><i style="padding-left:30%" class="fas fa-briefcase"></i><br>Post Job</a>
+      </li>
+ <li class="nav-item">
+        <a style="padding-left:20px" class="nav-link" href="/logout"><br><i style="padding-left:30%" class="fas fa-power-off"></i><br>Logout</a>
+      </li>
+
+
+    </ul>
+  </div>
+    </nav></div></div>
+
+
+	<script src="{% static 'js/main.js' %}"></script>
+
+<br>
+<div class="container-fluid  d-flex justify-content-center" style="width:90%">
+
+	<div class="form-v10-content">
+			<div class="row">
+			<form class="form-detail" action="#" method="POST" id="myform">{% csrf_token %}
+				<div class="col-sm-6"><div class="form-left" style="padding-bottom:0px">
+					<h2>General Infomation</h2>
+
+					<div class="form-group">
+                        <div class="form-row form-row-1">
+                            {{ form.Company_name }}
+						</div>
+						<div class="form-row form-row-2">
+							{{ form.Job_title }}
+						</div>
+					</div>
+
+					<div class="form-row">
+						{{ form.Location }}
+					</div>
+
+						<div class="form-row ">
+							{{ form.Salary }}
+						</div>
+                    <div class="form-row ">
+							{{ form.link }}
+						</div>
+
+
+					<div class="ui calendar" id="example11">
+    <div class="col-9"> <div class="ui input" style="padding-left:40px;width:130%;margin-bottom:10px">
+      <input type="text" placeholder="Deadline" name='date' class="form-control" style="width:100%;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+">
+	</div></div>
+  </div>
+				</div></div>
+				<div class="col-sm-6">
+				<div class="form-right" style="height:100%;margin-bottom: -15px">
+					<h2>Company Information</h2>
+					<div class="form-row">
+						{{ form.About_company }}
+					</div>
+					<div class="form-row">
+						{{ form.About_role }}
+					</div>
+
+
+
+						<input type="submit" value="submit" class="register" style="margin: 10%  28%  5%">
+				</div></div>
+
+			</form>
+	</div>
+	</div></div>
+
+      <!-- You can alternatively load the minified version -->
+      <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+{% block k %}
+{% endblock k %}
+<br>
+<footer style="background-color: #1E3953;
+    text-align: justify;padding:20px">
+
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-3">
+                <h3><font color="#FFFFFF">CDAC ALumni</font></h3>
+            </div></div>
+         <div class="row">
+             <div class="col-sm-1"></div>
+            <div class="col-sm-9" style="font-size: 13px;">
+<h5><font color="#666" face="Roboto" >Established in year 2000, The institute is recognised countrywide as a leader in the
+                field of engineering education and research. Reputed for the outstanding calibre of students graduating from its undergraduate programmes ..
+    <br><br><a style="padding-left:50px" href="/about/"> Know More</a>
+</font></h5> </div>
+        </div>
+    <div class="row">
+    <div class="col-sm-12">
+        <br><br>
+    </div>
+</div>
+
+</footer>
+<script>  $(function() {
+
+    $('#search').keyup(function() {
+
+        $.ajax({
+            type: "GET",
+            url: "/searcht/",
+            data: {
+                'search_text' : $('#search').val(),
+                'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+    });
+});
+
+function searchSuccess(data, textStatus, jqXHR)
+{
+    $('#search-results').html(data)
+}</script>
+<script>
+   $("#cn").change(function () {
+      var field = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validatecn/',
+        data: {
+          'field': field
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("Company Name can not  be only numeric");
+          }
+        }
+      });
+
+    });
+
+      $("#jt").change(function () {
+      var field = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validatejt/',
+        data: {
+          'field': field
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("Job title can not be numeric");
+          }
+        }
+      });
+
+    });
+         $("#loc").change(function () {
+      var field = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validateloc/',
+        data: {
+          'field': field
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("Location can not be completely numeric.Enter valid location");
+          }
+        }
+      });
+
+    });
+            $("#ar").change(function () {
+      var field = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validatear/',
+        data: {
+          'field': field
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("Role must contain atleast 6 character");
+          }
+        }
+      });
+
+    });
+               $("#ac").change(function () {
+      var field = $(this).val();
+
+      $.ajax({
+        url: '/ajax/validateac/',
+        data: {
+          'field': field
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("Tell atleast 6 characters about company");
+          }
+        }
+      });
+
+    });
+</script>
+
+
+<script type="text/javascript">
+
+            $(function () {var today = new Date();
+           $('#example11').calendar({
+  type: 'date',
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+ formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return year + '-' + month + '-' + day;
+    }
+  }
+
+});
+            });
+        </script>
+
+
+</body>
+</html>

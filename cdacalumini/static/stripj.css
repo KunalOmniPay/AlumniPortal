@@ -1,0 +1,49 @@
+#icon{padding-left:30%;}
+
+#job{padding-top:4px;margin-right:0px;margin-left: 600px;}
+#yearrow{
+    margin-top:70px;
+
+}
+#searchjr{margin-top: 84px;
+}
+#aplstrip{
+    margin-top:94px;
+}
+#jrow{
+    margin-top:95px;
+
+}
+#arow{
+    margin-top:95px;
+
+}
+@media screen and (max-width: 900px){
+#yearrow{
+    margin-top:26px;
+
+}
+#searchjr{margin-top: 26px}
+#jrow{
+    margin-top:42px;
+
+}
+#aplstrip{
+    margin-top:50px;
+}
+#icon{padding-left: 12px;}
+#arow{
+    margin-top:26px;
+
+}
+#job{margin-left: 130px}
+#myprof{margin-left: 0px;margin-right: 0px}
+#reco{visibility: hidden}
+}
+@media screen and (max-width: 584px){
+    #j{ padding-left: 200px}
+}
+
+@media screen and (min-width: 900px) {
+
+#recoo{visibility: hidden}}

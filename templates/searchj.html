@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+  <div class="container-fluid" id="yearrow">
+<div class="row" style="background-color:#000066;padding-top:20px"><br>
+<div class="col-2 mx-3 my-2" style="padding:0%;background-color:#3333FF; border-radius:2%">
+   <p style="text-align: center;padding-top: 8px;padding-bottom: 0px;height: 30px;">
+   <b>
+   <a href="/my_profile"><font color=white size="4" face="Roboto">{{ request.user }}</font></a></b></div>
+    <div class="col-2"></div>
+    <div class="col-md-6" style="padding-top: 0px;padding-right: 0px;padding-left: 0px;">
+     <form class="form-inline my-2 my-lg-0" role="search" method="post" action="/searchj/" id="j">{% csrf_token %}
+      <input class="form-control mx-3" type="search" placeholder="search by Job Title" name="q"  value="{{ request.GET.q }}">
+            <input class="form-control mr-sm-2" type="search" placeholder="search by City" name="c"  value="{{ request.GET.c }}">
+
+         <button class="btn btn-outline-primary col-1" style="width:200px;margin-top:9px;padding-right: 20px;padding-left: 20px" type="submit"><i class="fas fa-search"></i></button>
+    </form></div>
+    &nbsp;</div></div>
+<br>
+<br>
+<div class="container">
+	{% for obj in y %}
+
+    <div class="row d-flex justify-content-center">
+
+<div class="col-sm-9 ">
+
+    {% if obj.Deadline >= today.date %}
+
+
+    <div class="card">
+    <div class="card-body">
+    <b><font size="5">{{ obj.Job_title }} |</font></b>&nbsp; <font color="#D2DEDF">&nbsp;</font><font size="4" color="#225555">{{ obj.Company_name }}
+	</font><br><br>
+
+        <div class="row">
+              <div class="col-1"></div>
+            <div class="col-4">Location<br>{{ obj.Location }}</div>
+            <div class="col-4">Deadline<br>{{ obj.Deadline }}</div>
+            <div class="col-3">Salary<br>{{ obj.Salary }}</div>
+        </div>
+<br>
+    <div class="row"><br><br>
+        <div class="col-9"><font face="Roboto" color="#C6C8CA">&nbsp;&nbsp;&nbsp;&nbsp;<b>&nbsp;</b></font><b><font size="4" face="Roboto" color="#666666">Posted By:</font></b><font face="Times New Roman" color="#666666"><font size="4">&nbsp; {{ obj.Your_name }}</span>&nbsp;<br>
+	</font>
+	<b><font size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ON: </font>
+	<span style="font-weight: 400"><font size="4">{{ obj.Currentdate }}
+
+
+
+
+</font></span></b></font></div>
+
+	<div class="col-3">
+<a href="/jobdetail/{{ obj.id }}" class="btn btn-primary btn-primary" style="font-weight:700;background-color:#000066;padding-top: 10px;padding-right: 5px;padding-left: 5px;padding-bottom: 10px;">
+<font color="#000000" face="Roboto"></font>
+<font color=white face="Roboto">Apply</font></a>
+
+        &nbsp;</div></div></div>
+  </div>
+  <br>
+    {% endif %}
+</div></div>
+
+	{% endfor %}
+</div>
+{% if c == 0 %}
+
+<p align="center" style="margin-bottom: 100px"><img src="/media/no.png" width="200" height="200"><br><br>
+    <br><font size="5" >No Matching Jobs Found</font><br>
+Please make sure your keywords are spelled correctly</p>
+{% endif %}
+
+{% endblock %}
+
+
+

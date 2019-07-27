@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<br>
+<br>
+
+
+
+          <div class="row mx-4" style="margin-top:90px" >
+{% for user_p, o, b, c, f, l, bat, t in my %}
+
+
+          <div class="col-sm-3 col-lg-3 d-flex justify-content-center my-2" style="vertical-align:middle">
+              <div class="flip-card">
+  <div class="flip-card-inner" >
+    <div class="flip-card-front">
+      <img src="/media/{{ c }}" alt="Avatar" style="width:150px;height:150px;border-radius:50%">
+        <p align="center"><br> <h4><b>{{ f }} {{ l }}</b></h4>
+
+</p>
+    </div>
+    <div class="flip-card-back">
+        <br>
+        <br>
+        <br>
+        <br>
+
+      <h1 style="font-family:Roboto"><a href="/uprof1/{{ o.id }}">{{ f }} {{ l }}</a></h1>
+      <p>Batch :{{ bat }}</p>
+      <p style="font-family:Roboto">Technology : {{ t }}</p>
+           <font color=white face="Arial Rounded MT Bold" size="2">
+                {% if b == 'not_friend' %}
+	<a href="/friend-request_p/send/{{ user_p.user.id }}/{{ querry }}" class="btn btn-primary btn-primary" style="font-weight:700;background-color:#000066;width:200px;padding-left:15px;padding-right:15px"><i class="fa fa-plus"></i>
+<font size="2"> Add to Network</font></a>
+            {% elif b == 'friend_request_sent' %}
+                <a href="/friend-request_p/cancel/{{ user_p.user.id }}/{{ querry }}" class="btn btn-primary btn-primary" style="font-weight:700;background-color:#CC0000;width:200px;padding-left:15px;padding-right:15px"><span class="fas fa-times"></span>
+cancel request</a>
+
+                {% endif %}
+            </font>
+    </div>
+  </div>
+</div>
+              <br><br>
+                            </div>
+
+
+       {% endfor %}
+       </div>
+
+{% if c == 0 %}
+<p align="center" style="margin-bottom: 100px"><img src="/media/no.png" width="200" height="200"><br><br>
+    <br><font size="5" >No Alumni with name "{{ querry }}"</font><br>
+Please make sure your keywords are spelled correctly</p>
+{% endif %}
+{% endblock %}
