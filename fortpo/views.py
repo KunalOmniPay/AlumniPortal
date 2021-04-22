@@ -4,7 +4,7 @@ from django.shortcuts import render
 import csv
 from cdacalumini.models import Job,Apply_job
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404, redirect,render_to_response
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db.models import Q

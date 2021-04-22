@@ -4,8 +4,7 @@ import csv
 import io
 from mailmerge import MailMerge
 from django.http import JsonResponse
-from django.core.urlresolvers import reverse
-
+from django.urls import reverse
 
 
 #from templated_docs import fill_template
@@ -14,7 +13,7 @@ from django.core.urlresolvers import reverse
 from django.core.mail import EmailMultiAlternatives
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404, redirect,render_to_response
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.mail import send_mail
 from .models import Profile, FriendRequest
 from django.conf import settings
@@ -71,8 +70,7 @@ def home(request):
 	test = testimonial.objects.all()
 
 	list = zip(f, l, p)
-	return render(request, "home.html",
-				  {'a': a[0], 'd': d[0], 'tp': test, 'r': r, 's': s, 'rec': list, 'count': countn})
+	return render(request, "home.html", {'a': a[0], 'd': d[0], 'tp': test, 'r': r, 's': s, 'rec': list,'count': countn})
 def about(request):
 	r = 0
 	z=1
@@ -87,6 +85,7 @@ def about(request):
 			a = get_object_or_404(Info, Email=request.user.email)
 			if a.valid == True:
 				s = 1
+
 	return render(request,"about.html",{'r':r,'s':s,'z':z})
 
 
@@ -314,6 +313,9 @@ def contact(request):
 
 
 def login_c(request):
+	if request.user.is_authenticated():
+		return redirect('/')
+	else:
 		if request.method=="GET":
 			return render(request,"login.html")
 		if request.method=="POST":
@@ -333,20 +335,23 @@ def login_c(request):
 
 
 def login_v(request):
-	if request.method == "GET":
-		return render(request, "login1.html")
-	if request.method == "POST":
-		username = request.POST.get('username')
-		password = request.POST.get('Password')
-		if (username == 'cdac' and password == 'cdac@123'):
-			return redirect('/tpo')
-		else:
-			user = authenticate(username=username, password=password)
-		try:
-			login(request, user)
-			return redirect('/')
-		except:
-			return redirect('/login1/')
+	if request.user.is_authenticated():
+		return redirect('/')
+	else:
+		if request.method == "GET":
+			return render(request, "login1.html")
+		if request.method == "POST":
+			username = request.POST.get('username')
+			password = request.POST.get('Password')
+			if (username == 'cdac' and password == 'cdac@123'):
+				return redirect('/tpo')
+			else:
+				user = authenticate(username=username, password=password)
+			try:
+				login(request, user)
+				return redirect('/')
+			except:
+				return redirect('/login1/')
 
 
 def logout_c(request):
@@ -549,8 +554,8 @@ def job(request):
 		e=request.user.email
 		a = get_object_or_404(Info, Email=e)
 		count=0
-		obj_list=Job.objects.all().order_by('Deadline')
-		a=Job.objects.all()
+		obj_list=Job.objects.all().exclude(Email=request.user.email).order_by('Deadline')
+		a=Job.objects.all().exclude(Email=request.user.email)
 		for i in range(0,len(a)):
 			if (a[i].Deadline >= datetime.date(datetime.now())):
 				count+=1
@@ -751,7 +756,9 @@ def users_list(request):
 
 def send_friend_request(request, id):
 	if request.user.is_authenticated:
+
 		user = get_object_or_404(User, id=id)
+		print(user)
 		frequest, created = FriendRequest.objects.get_or_create(
 			from_user=request.user,
 			to_user=user)
@@ -760,6 +767,7 @@ def send_friend_request(request, id):
 def cancel_friend_request(request, id):
 	if request.user.is_authenticated:
 		user = get_object_or_404(User, id=id)
+		print(user)
 		frequest = FriendRequest.objects.filter(
 			from_user=request.user,
 			to_user=user).first()
@@ -1132,7 +1140,7 @@ def search(request,querry=None):
 		f = []
 		username = request.user
 		today = timezone.now()
-		y = Job.objects.all().filter(Q(Job_title__icontains=querry))
+		y = Job.objects.all().filter(Q(Job_title__icontains=querry)).order_by('Deadline')
 		k = Info.objects.all().filter(Q(First_name__icontains=querry)).exclude(Email=request.user.email)
 		stud = k.exclude(valid=False)
 		for i in range(0, len(stud)):
@@ -1373,7 +1381,7 @@ def searchj(request):
 	query = request.POST.get('q')
 	city = request.POST.get('c')
 	today = timezone.now()
-	y = Job.objects.all().filter(Q(Job_title__icontains=query))
+	y = Job.objects.all().filter(Q(Job_title__icontains=query)).order_by('Deadline')
 	x = y.filter(Q(Location__icontains=city))
 
 	context = {
@@ -1947,10 +1955,10 @@ def search_text(request):
 
 def resumemaker(request):
     obj=get_object_or_404(Info,Email=request.user.email)
-    p=project.objects.all().filter(semail=request.user.email)
-    j=Sjob.objects.all().filter(semail=request.user.email)
-    i=Intern.objects.all().filter(semail=request.user.email)
-    t=Training.objects.all().filter(semail=request.user.email)
+    p=project.objects.all().filter(semail=request.user.email).order_by('startd')
+    j=Sjob.objects.all().filter(semail=request.user.email).order_by('startd')
+    i=Intern.objects.all().filter(semail=request.user.email).order_by('startd')
+    t=Training.objects.all().filter(semail=request.user.email).order_by('startd')
     s=Skill.objects.all().filter(semail=request.user.email)
     formp=Projectform( request.POST or None )
     formj=Jobform(request.POST or None)

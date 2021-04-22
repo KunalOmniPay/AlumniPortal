@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db.models.signals import post_save
 # Create your models here.
-
+import django.utils
 from datetime import date
 
 class Info(models.Model):
@@ -165,8 +165,8 @@ class testimonial(models.Model):
     tsign = models.ImageField(upload_to='media/', blank=False)
 
 class Con(models.Model):
-    phone1 = models.IntegerField(max_length=12,blank=False)
-    phone2 = models.IntegerField(max_length=12, blank=False)
+    phone1 = models.IntegerField(blank=False)
+    phone2 = models.IntegerField(blank=False)
     email = models.EmailField(max_length=50,blank=False)
     location = models.TextField(blank=False)
 
@@ -174,8 +174,8 @@ class project(models.Model):
     semail=models.CharField(max_length=50,blank=False)
     title=models.CharField(max_length=50,blank=False)
     description=models.TextField(max_length=300,blank=False)
-    startd = models.DateField(default=timezone.now(),blank=False)
-    endd = models.DateField(default=timezone.now(),blank=False)
+    startd = models.DateField(default=django.utils.timezone.now,blank=False)
+    endd = models.DateField(default=django.utils.timezone.now,blank=False)
     link=models.CharField(max_length=100,blank=True)
 
 class Skill(models.Model):
@@ -189,16 +189,16 @@ class Intern(models.Model):
     profile=models.CharField(max_length=50,blank=False)
     organisation = models.CharField(max_length=50, blank=False)
     description=models.TextField(max_length=300,blank=False)
-    startd = models.DateField(default=timezone.now(),blank=False)
-    endd = models.DateField(default=timezone.now(),blank=False)
+    startd = models.DateField(default=django.utils.timezone.now,blank=False)
+    endd = models.DateField(default=django.utils.timezone.now,blank=False)
 
 class Training(models.Model):
     semail=models.CharField(max_length=50,blank=False)
     program=models.CharField(max_length=50,blank=False)
     organisation = models.CharField(max_length=50, blank=False)
     description=models.TextField(max_length=300,blank=False)
-    startd = models.DateField(default=timezone.now(),blank=False)
-    endd = models.DateField(default=timezone.now(),blank=False)
+    startd = models.DateField(default=django.utils.timezone.now,blank=False)
+    endd = models.DateField(default=django.utils.timezone.now,blank=False)
 
 class Sjob(models.Model):
     semail=models.CharField(max_length=50,blank=False)

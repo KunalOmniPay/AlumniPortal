@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <html>
 
 <head>
@@ -271,7 +271,7 @@ document.getElementById("materialLoginFormPassword").type='password';
         dataType: 'json',
         success: function (data) {
           if (data.is_taken) {
-            $('#kunal').attr("disabled", false);
+            $('#kunal').attr("disabled", true);
 
             alert("username can not be completely numeric.");
           }
